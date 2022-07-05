@@ -80,6 +80,9 @@ header .header-container #main-navigation ul .sign-up a:hover {
 header .header-container #main-navigation .drop-down-button, header .header-container #main-navigation .drop-down-content {
   display: flex;
 }
+header .header-container #main-navigation .drop-down-button {
+  display: none;
+}
 header .header-container #main-navigation .nav-down-arrow {
   display: none;
   width: 17px;
@@ -99,6 +102,9 @@ header .header-container #main-navigation .mobile-nav-hamburger svg {
 }
 
 @media (max-width: 810px) {
+  header .header-container #main-navigation .drop-down-button {
+    display: flex;
+  }
   header .header-container #main-navigation .nav-down-arrow {
     display: inline-block;
   }
@@ -160,11 +166,8 @@ header .header-container #main-navigation .mobile-nav-hamburger svg {
   header .header-container #main-navigation .drop-down-content a {
     display: block;
   }
-  header .header-container #main-navigation .drop-down-button li {
-    width: 100%;
-  }
-  header .header-container #main-navigation .drop-down-button li a {
-    display: block;
+  header .header-container #main-navigation .drop-down-button {
+    display: none;
   }
   header .header-container #main-navigation .get-started-links {
     flex-direction: column;

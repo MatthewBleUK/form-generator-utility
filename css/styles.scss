@@ -101,6 +101,10 @@ header {
             .drop-down-button, .drop-down-content {
                 display: flex;
             }
+
+            .drop-down-button {
+                display: none;
+            }
             
 
             .nav-down-arrow {
@@ -133,6 +137,10 @@ header {
         .header-container {
 
             #main-navigation {
+
+                .drop-down-button {
+                    display: flex;
+                }
 
                 .nav-down-arrow {
                     display: inline-block;
@@ -220,13 +228,7 @@ header {
                 }
 
                 .drop-down-button {
-                    li {
-                        width: 100%;
-
-                        a {
-                            display: block;
-                        }
-                    }
+                    display: none;
                 }
 
                 .get-started-links {
