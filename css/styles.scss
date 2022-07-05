@@ -1,0 +1,293 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap');
+
+/* Universial Styles */
+* { 
+    box-sizing: border-box; 
+}
+
+$background-color: #f5f7f8;
+$secondary-theme-color: #02ad88;
+
+body, html {
+    background: $background-color;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 400;
+    height: 100%;
+}
+
+$md: 768px;
+
+@media (min-width: $md) { 
+    .header-container {
+        max-width: 1320px;
+    }
+}
+
+/* Header */
+header {
+    background: #fff;
+
+    .header-container {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        height: 85px;
+        margin: 0 auto;
+        padding: 0px 25px;
+        width: 100%;
+        max-width: 1320px;
+
+        .site-logo-container {
+            width: 230px;
+
+            #site-logo {
+                margin: 0;
+                
+                a {
+                    text-decoration: none;
+                    color: #000;
+                }
+            }
+        }
+
+        #main-navigation {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            ul {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                list-style-type: none;
+                
+                li {
+                    margin-left: 25px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #343f52;
+                    font-size: 1rem;
+                    padding: 24px 12px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: $secondary-theme-color;
+                    }
+                }
+
+                .sign-up {
+                    cursor: pointer;
+
+                    a {
+                        color: #fff;
+                        padding: 11px 19px;
+                        background: $secondary-theme-color;
+                        border-radius: 23px;
+
+                        &:hover {
+                            box-shadow: 0 0 10px $secondary-theme-color;
+                        }
+                    } 
+                }
+            }
+            
+            .get-started-links {
+            
+            }
+
+            .drop-down-button, .drop-down-content {
+                display: flex;
+            }
+            
+
+            .nav-down-arrow {
+                display: none;
+                width: 17px;
+                height: 13px;
+                fill: #00ad87;
+                position: relative;
+                top: 2px;
+            }
+
+            .mobile-nav-hamburger {
+                display: none;
+                position: relative;
+                top: 4px;
+                
+                svg {
+                    width: 32px;
+                    fill: #02ad88;
+                }
+            }
+        }
+    }
+}
+
+// Tablet navigation
+@media (max-width: 810px) {
+    header {
+
+        .header-container {
+
+            #main-navigation {
+
+                .nav-down-arrow {
+                    display: inline-block;
+                }
+                
+                .drop-down-content {
+                    display: none;
+                    position: absolute;
+                    flex-direction: column;
+                    top: 70px;
+
+                    li {
+                        line-height: 44px;
+                        background: #f5f7f8;
+                        width: 157px;
+                    }
+                }
+
+                // on hover show drop down content
+                .nav-links:hover .drop-down-content {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+// Mobile navigation
+@media (max-width: 600px) {
+
+    header {
+        background: #fff;
+    
+        .header-container {
+
+            .site-logo-container {
+                #site-logo {
+                    width: 210px;
+                }
+            }
+
+            #main-navigation {
+                justify-content: end;
+
+                .nav-links, .get-started-links { 
+                    display: none;
+                }
+
+                .nav-links {
+                    position: absolute;
+                    width: 100%;
+                    top: 64px;
+                    background: #fff;
+                    left: 0px;
+                    flex-direction: column;
+                }
+
+                .show {
+                    display: flex;
+                }   
+
+                .mobile-nav-hamburger {
+                    display: block;
+                }
+
+                .nav-down-arrow {
+                    display: none;
+                }
+
+                .drop-down-content {
+                    display: flex;
+                    top: 0;
+                    position: relative;
+
+                    li {
+                        line-height: 18px;
+                        background: none;
+                        width: 100%;
+                    }
+
+                    a {
+                        display: block;
+                    }
+                }
+
+                .drop-down-button {
+                    li {
+                        width: 100%;
+
+                        a {
+                            display: block;
+                        }
+                    }
+                }
+
+                .get-started-links {
+    
+                    flex-direction: column;
+                    position: absolute;
+                    left: 0;
+                    top: 262px;
+                    width: 100%;
+                    background: #fff;
+
+                    .sign-up {
+                        height: 66px;
+
+                        a {
+                            width: 144px;
+                            text-align: center;
+                            position: relative;
+                            top: 13px;
+                        }
+                    }
+                    
+                    li {
+                        
+                        a {
+                            display: block;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+/* Footer */
+footer {
+    background: #fff;
+    // position: absolute;
+    // bottom: 0;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 10px 0px;
+    
+    .footer-container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        padding: 0px 25px;
+        width: 100%;
+        max-width: 1320px;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .copyright-txt-container, .author-txt-container {
+            padding: 10px 0px;
+        }
+
+        .copyright-txt-container {
+            margin-right: 20px;
+        }
+    }
+}
