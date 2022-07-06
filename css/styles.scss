@@ -8,6 +8,7 @@
 
 $background-color: #f5f7f8;
 $secondary-theme-color: #02ad88;
+$nav-text-color: #343f52;
 
 body, html {
     background: $background-color;
@@ -16,15 +17,7 @@ body, html {
     height: 100%;
 }
 
-$md: 768px;
-
-@media (min-width: $md) { 
-    .header-container {
-        max-width: 1320px;
-    }
-}
-
-/* Header */
+/* Default / Desktop Header Navigation */
 header {
     background: #fff;
 
@@ -59,7 +52,7 @@ header {
             
             svg {
                 width: 32px;
-                fill: #02ad88;
+                fill: $secondary-theme-color;
             }
         }
 
@@ -80,7 +73,7 @@ header {
 
                 a {
                     text-decoration: none;
-                    color: #343f52;
+                    color: $nav-text-color;
                     font-size: 1rem;
                     padding: 24px 12px;
 
@@ -123,7 +116,7 @@ header {
                 display: none;
                 width: 17px;
                 height: 13px;
-                fill: #00ad87;
+                fill: $secondary-theme-color;
                 position: relative;
                 top: 2px;
             }
@@ -131,7 +124,7 @@ header {
     }
 }
 
-// Tablet navigation
+/* Tablet Header Navigation */
 @media (max-width: 810px) {
     header {
 
@@ -245,7 +238,7 @@ header {
                         margin: 0;
                         padding-left: 20px;
                         box-shadow: none;
-                        border-left: 5px solid #02ad88;
+                        border-left: 5px solid $secondary-theme-color;
                         
                         &:last-child {
                             border-bottom: 1px solid #e1e1e1;
@@ -276,13 +269,13 @@ header {
 
                         a {
                            position: relative;
-                           color: #343f52;
+                           color: $nav-text-color;
                            background: none;
                            padding: 24px 12px;
 
                            &:hover {
                                 box-shadow: none;
-                                color: #02ad88;
+                                color: $secondary-theme-color;
                            }
                         }
                     }
@@ -290,7 +283,7 @@ header {
                     li {
                         margin: 0;
                         padding-left: 20px;
-                        border-left: 5px solid #02ad88;
+                        border-left: 5px solid $secondary-theme-color;
                         border-bottom: 1px solid #e1e1e1;
 
                         &:last-child {
@@ -326,7 +319,7 @@ footer {
 
             a {
                 text-decoration: none;
-                color: #00ad87;
+                color: $secondary-theme-color;
                 font-weight: 600;
             }
         }
@@ -345,7 +338,7 @@ footer {
 
             a {
                 text-decoration: none;
-                color: #343f52;
+                color: $nav-text-color;
                 font-weight: 600;
 
                 -webkit-transition: 0.3s;
@@ -355,7 +348,7 @@ footer {
                 transition: 0.3s;
 
                 &:hover {
-                    color: #02ad88;
+                    color: $secondary-theme-color;
                 }
             }
         }

@@ -12,12 +12,7 @@ body, html {
   height: 100%;
 }
 
-@media (min-width: 768px) {
-  .header-container {
-    max-width: 1320px;
-  }
-}
-/* Header */
+/* Default / Desktop Header Navigation */
 header {
   background: #fff;
 }
@@ -101,11 +96,12 @@ header .header-container #main-navigation .nav-down-arrow {
   display: none;
   width: 17px;
   height: 13px;
-  fill: #00ad87;
+  fill: #02ad88;
   position: relative;
   top: 2px;
 }
 
+/* Tablet Header Navigation */
 @media (max-width: 810px) {
   header .header-container #main-navigation .drop-down-button {
     display: flex;
@@ -252,7 +248,7 @@ footer .footer-container .authors, footer .footer-container .copyright {
 }
 footer .footer-container .authors a, footer .footer-container .copyright a {
   text-decoration: none;
-  color: #00ad87;
+  color: #02ad88;
   font-weight: 600;
 }
 footer .footer-container .footer-menu {
