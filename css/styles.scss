@@ -354,3 +354,100 @@ footer {
         }
     }
 }
+
+body,
+html {
+	background: $background-color;
+	font-family: 'Urbanist', sans-serif;
+	font-weight: 400;
+	height: 100%;
+}
+
+/* Full screen form pages - login, register, change-password and reset-password pages */
+#form-page {
+	background: $background-color;
+
+	.form {
+		width: 400px;
+		margin: 0 auto;
+		padding: 25px;
+		background: $background-color;
+		border-radius: 2px;
+		position: relative;
+
+		h3 {
+			text-align: center;
+			font-size: 1.7em;
+			margin-bottom: 40px;
+		}
+
+		.form-label {
+			margin-top: 20px;
+			margin-bottom: 8px;
+			display: block;
+		}
+
+		input {
+			display: block;
+			border-radius: 0;
+			border: 0;
+			background: #e8eeef;
+			padding: 15px;
+			width: 100%;
+		}
+
+		.form-btn {
+			margin-bottom: 0;
+			margin-top: 20px;
+			background: $secondary-theme-color;
+			border: none;
+			color: #fff;
+			cursor: pointer;
+			border-radius: 30px;
+			transition: 0.3s;
+
+			&:hover {
+				box-shadow: 0 0 10px $secondary-theme-color;
+			}
+		}
+
+		.terms-txt {
+			font-size: 0.9rem;
+			display: block;
+			padding-top: 12px;
+		}
+
+		.existing-user-txt {
+			display: block;
+			text-align: center;
+			margin-top: 25px;
+		}
+
+		.new-user-txt {
+			display: block;
+			text-align: center;
+			margin-top: 25px;
+		}
+
+		.forgotten-pass-txt {
+			padding-top: 11px;
+			display: block;
+			font-size: 0.9rem;
+
+			a {
+				text-decoration: none;
+			}
+		}
+
+		.error {
+			color: red;
+		}
+	}
+}
+
+@media only screen and (max-width: 395px) {
+	#form-page .form {
+		width: 100%;
+		min-width: 320px;
+	}
+}

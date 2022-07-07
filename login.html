@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login</title>
+        <meta name="description" content="Log in to your Demo's application. A free application to easily send form data straight to your email.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body id="form-page">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    
+        <div class="form">
+
+            <h3>Login to Demo</h3>
+
+            <form id="login-form" action="">
+
+                <label class="form-label">Email Address *</label>
+                <input type="email" name="email">
+
+                <label class="form-label">Password *</label>
+                <input type="password" name="password">
+
+                <span class="forgotten-pass-txt"><a href="reset-password.html">Forgotten your password?</a></span>
+
+                <input type="submit" value="Login" class="form-btn">
+				
+            </form>
+
+            <span class="new-user-txt">Don't have an account? <a href="sign-up.html">Sign up here</a></span>
+        </div>
+        
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/jquery-validate-1.19.5.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
