@@ -233,6 +233,25 @@ header .header-container #main-navigation .nav-down-arrow {
     display: block;
   }
 }
+/* Article pages */
+#article-page #article {
+  min-width: 295px;
+  margin: 25px 25px;
+}
+#article-page #article .article-container {
+  margin: 0 auto;
+  padding: 25px 40px;
+  width: 100%;
+  max-width: 1320px;
+  background: #fff;
+}
+#article-page #article .article-container .article-title {
+  margin-bottom: 35px;
+}
+#article-page #article .article-container .txt-center {
+  text-align: center;
+}
+
 /* Footer */
 footer {
   min-width: 295px;
