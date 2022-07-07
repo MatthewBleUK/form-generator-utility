@@ -1,0 +1,93 @@
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap");
+/* Universial Styles */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background: #f5f7f8;
+  font-family: "Urbanist", sans-serif;
+  font-weight: 400;
+  height: 100%;
+}
+
+/* Full screen form pages - login, register, change-password and reset-password pages */
+#form-page {
+  background: #f5f7f8;
+}
+#form-page .form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 25px;
+  background: #f5f7f8;
+  border-radius: 2px;
+  position: relative;
+}
+#form-page .form h3 {
+  text-align: center;
+  font-size: 1.7em;
+  margin-bottom: 40px;
+}
+#form-page .form .form-label {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  display: block;
+}
+#form-page .form input {
+  display: block;
+  border-radius: 0;
+  border: 0;
+  background: #e8eeef;
+  padding: 15px;
+  width: 100%;
+}
+#form-page .form .form-btn {
+  margin-bottom: 0;
+  margin-top: 20px;
+  background: #02ad88;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+#form-page .form .form-btn:hover {
+  box-shadow: 0 0 10px #02ad88;
+}
+#form-page .form .terms-txt {
+  font-size: 0.9rem;
+  display: block;
+  padding-top: 12px;
+}
+#form-page .form .existing-user-txt {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+}
+#form-page .form .new-user-txt {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+}
+#form-page .form .forget-pass-txt {
+  padding-top: 11px;
+  display: block;
+  font-size: 0.9rem;
+}
+#form-page .form .forget-pass-txt a {
+  text-decoration: none;
+}
+#form-page .form .error {
+  color: red;
+}
+
+@media only screen and (max-width: 395px) {
+  #form-page .form {
+    width: 100%;
+    min-width: 320px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
