@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   background: #f5f7f8;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
@@ -86,7 +87,8 @@ header .header-container #main-navigation ul .sign-up a {
 header .header-container #main-navigation ul .sign-up a:hover {
   box-shadow: 0 0 10px #02ad88;
 }
-header .header-container #main-navigation .drop-down-button, header .header-container #main-navigation .drop-down-content {
+header .header-container #main-navigation .drop-down-button,
+header .header-container #main-navigation .drop-down-content {
   display: flex;
 }
 header .header-container #main-navigation .drop-down-button {
@@ -159,7 +161,8 @@ header .header-container #main-navigation .nav-down-arrow {
     -o-transition: 1s;
     transition: 1s;
   }
-  header .header-container #main-navigation .nav-links, header .header-container #main-navigation .get-started-links {
+  header .header-container #main-navigation .nav-links,
+header .header-container #main-navigation .get-started-links {
     display: none;
   }
   header .header-container #main-navigation .nav-links {
@@ -233,6 +236,25 @@ header .header-container #main-navigation .nav-down-arrow {
     display: block;
   }
 }
+/* Article pages */
+#article-page #article {
+  min-width: 295px;
+  margin: 25px 25px;
+}
+#article-page #article .article-container {
+  margin: 0 auto;
+  padding: 25px 40px;
+  width: 100%;
+  max-width: 1320px;
+  background: #fff;
+}
+#article-page #article .article-container .article-title {
+  margin-bottom: 35px;
+}
+#article-page #article .article-container .txt-center {
+  text-align: center;
+}
+
 /* Footer */
 footer {
   min-width: 295px;
@@ -242,11 +264,13 @@ footer {
   padding: 50px 25px;
   text-align: center;
 }
-footer .footer-container .authors, footer .footer-container .copyright {
+footer .footer-container .authors,
+footer .footer-container .copyright {
   margin-bottom: 35px;
   display: block;
 }
-footer .footer-container .authors a, footer .footer-container .copyright a {
+footer .footer-container .authors a,
+footer .footer-container .copyright a {
   text-decoration: none;
   color: #02ad88;
   font-weight: 600;
@@ -258,7 +282,8 @@ footer .footer-container .footer-menu {
   padding-left: 0;
   list-style: none;
 }
-footer .footer-container .footer-menu a, footer .footer-container .footer-menu span {
+footer .footer-container .footer-menu a,
+footer .footer-container .footer-menu span {
   margin: 5px 13px;
   display: block;
 }
