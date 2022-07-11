@@ -314,4 +314,3 @@ $("#change-password-form").validate({
 		});
 	}
 });
-
