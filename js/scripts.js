@@ -1,18 +1,18 @@
 // Mobile Menu onClick open
-$(".mobile-nav-hamburger svg").click(function() {
+$(".mobile-nav-hamburger svg").click(function () {
 
-    $('#main-navigation').toggleClass('open');
+	$('#main-navigation').toggleClass('open');
 
 });
 
 // Closes mobile navigation on resize
-$(window).on('resize', function() {
+$(window).on('resize', function () {
 
-    if ($(window).width() <= 600) { 
-        
-        $('#main-navigation').removeClass('open');
+	if ($(window).width() <= 600) {
 
-    } 
+		$('#main-navigation').removeClass('open');
+
+	}
 });
 
 // Validation for sign up form
@@ -203,7 +203,7 @@ $.validator.addMethod("pwcheck", function (value, element) {
 		return 'Password must contain at least one digit.';
 
 	} else if (!(/^(?=.*[@#$%&])/.test(password))) {
-		
+
 		return "Password must contain special characters from @#$%&.";
 	}
 
