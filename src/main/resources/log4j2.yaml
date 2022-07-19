@@ -1,0 +1,52 @@
+Configutation:
+  status: warn
+  properties:
+    property:
+      - name: root-location
+        value: /var/log/auth-demo/
+      - name: pattern
+        value: "%d{yyyy-MM-dd HH:mm:ss} %level [%tid] %c{1.}: %m%n%ex"
+  appenders:
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: ${pattern}
+    RollingFile:
+      - name: MainFileAppender
+        fileName: ${root-location}/app.log
+        filePattern: ${root-location}/app-%i.log
+        PatternLayout:
+          Pattern: ${pattern}
+        SizeBasedTriggeringPolicy:
+          size: "25 MB"
+        DefaultRolloverStrategy:
+          max: 10
+      - name: ErrorFileAppender
+        fileName: ${root-location}/error.log
+        filePattern: ${root-location}/error-%i.log.gz
+        PatternLayout:
+          Pattern: ${pattern}
+        SizeBasedTriggeringPolicy:
+          size: "25 MB"
+        DefaultRolloverStrategy:
+          max: 10
+        ThresholdFilter:
+          level: ERROR
+          onMatch: ACCEPT
+          onMismatch: DENY
+  Loggers:
+    logger:
+      - name: com.demo
+        level: info
+        additivity: false
+        AppenderRef:
+          - ref: ConsoleAppender
+          - ref: MainFileAppender
+          - ref: ErrorFileAppender
+    Root:
+      level: info
+      AppenderRef:
+        - ref: ConsoleAppender
+        - ref: MainFileAppender
+        - ref: ErrorFileAppender
