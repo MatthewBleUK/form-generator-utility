@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8" />
@@ -16,9 +16,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
 	<!-- Normalize -->
-	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
 	<!-- CSS Styles -->
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 
 <body id="form-page">
@@ -35,22 +35,26 @@
 	<div class="form">
 		<h3>Sign Up to Demo</h3>
 
-		<form id="sign-up-form" method="post">
+		<form id="sign-up-form" th:action="@{/sign-up}" th:object="${user}" method="post">
+
+			<div id="error" th:if="${error != null}">
+				<p>[[${error}]]</p>
+			</div>
 
 			<label class="form-label">First Name *</label>
-			<input type="text" name="fname" />
+			<input th:field="*{firstName}"  type="text" name="fname" />
 
 			<label class="form-label">Last Name *</label>
-			<input type="text" name="lname" />
+			<input th:field="*{lastName}" type="text" name="lname" />
 
 			<label class="form-label">Email Address *</label>
-			<input type="email" name="email" />
+			<input th:field="*{email}" type="email" name="email" />
 
 			<label class="form-label">Password *</label>
-			<input type="password" name="password" id="password" />
+			<input th:field="*{password}" type="password" name="password" id="password" />
 
 			<label class="form-label">Confirm Password *</label>
-			<input type="password" name="confirm_password" />
+			<input th:field="*{matchingPassword}" type="password" name="confirm_password" />
 
 			<span class="terms-txt">
 				By creating an account, you agree to our
@@ -70,13 +74,13 @@
 	</div>
 
 	<!-- jQuery -->
-	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/js/jquery-3.6.0.min.js}"></script>
 
 	<!-- jQuery Validate -->
-	<script src="js/jquery-validate-1.19.5.min.js"></script>
+	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/js/jquery-validate-1.19.5.min.js}"></script>
 
 	<!-- JS Scripts -->
-	<script src="js/scripts.js"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/js/scripts.js}"></script>
 </body>
 
 </html>
