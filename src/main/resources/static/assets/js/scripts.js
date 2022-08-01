@@ -86,10 +86,12 @@ $("#sign-up-form").validate({
 
 	submitHandler: function () {
 
-		$.ajax({
+        return true;
+
+		/*$.ajax({
 
 			type: "POST",
-			url: '',   // Post url
+			url: '/sign-up',   // Post url
 			data: $('#sign-up-form').serialize(),
 
 			success: function (response) {
@@ -105,7 +107,7 @@ $("#sign-up-form").validate({
 					// fail
 				}
 			}
-		});
+		});*/
 	}
 });
 
@@ -143,7 +145,9 @@ $("#login-form").validate({
 
 	submitHandler: function () {
 
-		$.ajax({
+	    return true;
+
+		/*$.ajax({
 
 			type: "POST",
 			url: '',   // Post url
@@ -162,7 +166,7 @@ $("#login-form").validate({
 					// fail
 				}
 			}
-		});
+		});*/
 	},
 
 });
