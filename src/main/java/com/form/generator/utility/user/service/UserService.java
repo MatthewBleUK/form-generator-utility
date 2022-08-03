@@ -1,8 +1,10 @@
 package com.form.generator.utility.user.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
+import com.form.generator.utility.authentication.registration.RegistrationController;
 import com.form.generator.utility.notifications.GmailOperations;
 import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.UserDescription;
@@ -11,12 +13,16 @@ import com.form.generator.utility.user.dto.UserDto;
 import com.form.generator.utility.user.repository.TokenRepository;
 import com.form.generator.utility.user.repository.UserDescriptionRepository;
 import com.form.generator.utility.user.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 
 	@Autowired
 	private final PasswordEncoder passwordEncoder;
@@ -102,7 +108,12 @@ public class UserService {
 
 	public void enableUserAccount(User user) {
 
-		user.setEnabled("y");
-		userRepository.update(user);
+		if (Objects.equals(user.getEnabled(), "n")) {
+
+			user.setEnabled("y");
+			userRepository.update(user);
+
+			LOGGER.info("User {} successfully verified email", user.getEmail());
+		}
 	}
 }

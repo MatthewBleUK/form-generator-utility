@@ -26,12 +26,23 @@ public class TokenService {
 
 	public User findUserByToken(String token) throws Exception {
 
-		VerificationToken verificationToken = tokenRepository.getVerificationToken(token).stream().findFirst().get();
+		try {
 
-		User user = userService.findUser(verificationToken.getUser().getEmail()).get(0);
-		validateTokenExpiryDate(verificationToken);
+			VerificationToken verificationToken = tokenRepository
+					.getVerificationToken(token)
+					.stream()
+					.findFirst()
+					.get();
 
-		return user;
+			User user = userService.findUser(verificationToken.getUser().getEmail()).get(0);
+			validateTokenExpiryDate(verificationToken);
+
+			return user;
+
+		} catch (Exception e) {
+
+			throw new Exception("Verification token expired or not found");
+		}
 	}
 
 	public void validateTokenExpiryDate(VerificationToken verificationToken) throws Exception {
