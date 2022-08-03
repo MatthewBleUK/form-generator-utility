@@ -149,7 +149,7 @@ public class GmailOperations {
 	public void sendEmailForConfirmRegistration(String receiver, String token)
 			throws IOException, MessagingException, GeneralSecurityException {
 
-		String subject = "Welcome to... ";
+		String subject = "Welcome!";
 
 		String htmlText = generateConfirmationEmail(token);
 		Gmail service = GmailUtils.getGmailService();
