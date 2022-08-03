@@ -46,7 +46,8 @@ public class UserConfirmationController {
 			User tokenUser = tokenService.findUserByToken(token);
 			userService.enableUserAccount(tokenUser);
 
-			return "redirect:/login";
+			model.addAttribute("message", "Email successfully verified. Please log in");
+			return "/login";
 
 		} catch (Exception exception) {
 
