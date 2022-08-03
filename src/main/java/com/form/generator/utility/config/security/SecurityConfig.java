@@ -1,4 +1,4 @@
-package com.form.generator.utility.security;
+package com.form.generator.utility.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

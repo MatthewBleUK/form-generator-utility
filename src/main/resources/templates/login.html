@@ -16,9 +16,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 	<!-- Normalize -->
-	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
 	<!-- CSS Styles -->
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 
 <body id="form-page">
@@ -30,17 +30,17 @@
 
 		<h3>Login to Demo</h3>
 
-		<form id="login-form"  th:action="@{/login}" th:object="${user}" action="">
+		<form id="sign-up-form" th:action="@{/login}" th:object="${user}" method="post">
 
-			<div id="error" th:if="${message != null}">
+			<div id="message" th:if="${message != null}">
 				<p>[[${message}]]</p>
 			</div>
 
 			<label class="form-label">Email Address *</label>
-			<input type="email" th:field="*{email}" name="email">
+			<input th:field="*{email}" type="email" name="email" />
 
 			<label class="form-label">Password *</label>
-			<input type="password" th:field="*{password}" name="password">
+			<input th:field="*{password}" type="password" name="password" id="password" />
 
 			<span class="forgotten-pass-txt"><a href="reset-password.html">Forgotten your password?</a></span>
 

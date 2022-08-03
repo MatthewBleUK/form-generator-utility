@@ -1,4 +1,4 @@
-package com.form.generator.utility.controller.registration;
+package com.form.generator.utility.authentication.registration;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -62,7 +62,7 @@ public class RegistrationController {
 			// if no errors have been thrown user can now log in
 			LOGGER.info("User {} successfully registered", userDto.getEmail());
 
-			model.addAttribute("message", "Please verify email to log in");
+			model.addAttribute("message", "Please follow the link in your email to activate account");
 			return "/login";
 
 		} catch (Exception ex) {
@@ -94,7 +94,7 @@ public class RegistrationController {
 			userService.enableUserAccount(tokenUser);
 
 			LOGGER.info("User {} successfully verified email", tokenUser.getEmail());
-			model.addAttribute("message", "Account successfully verified. Please log in");
+			return "redirect:/confirmation";
 
 		} catch (Exception exception) {
 
@@ -103,5 +103,11 @@ public class RegistrationController {
 		}
 
 		return "/login";
+	}
+
+	@GetMapping("/confirmation")
+	public String confirmEmail() {
+
+		return "/confirmation";
 	}
 }

@@ -1,4 +1,4 @@
-package com.form.generator.utility.controller.registration;
+package com.form.generator.utility.authentication.registration;
 
 import java.util.Objects;
 import java.util.regex.Matcher;

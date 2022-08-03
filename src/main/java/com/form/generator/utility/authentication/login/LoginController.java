@@ -1,10 +1,11 @@
-package com.form.generator.utility.controller.login;
+package com.form.generator.utility.authentication.login;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.form.generator.utility.user.LoginDTO;
 import com.form.generator.utility.user.User;
+import com.form.generator.utility.user.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,9 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.WebRequest;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/")
 @SuppressWarnings("unused")
 public class LoginController {
 
@@ -25,36 +27,35 @@ public class LoginController {
 		this.authenticationHelper = authenticationHelper;
 	}
 
-
 	@GetMapping("/login")
-	public String showRegistrationForm(Model model) {
+	public String showLoginPage(Model model) {
 
 		model.addAttribute("user", new LoginDTO());
 
-		return "/login";
+		return "login";
 	}
 
 	@PostMapping("/login")
 	public String handleLogin(
-			@Valid @ModelAttribute("user") LoginDTO login,
-			BindingResult bindingResult,
+			@Valid @ModelAttribute("user") LoginDTO userDto,
 			HttpSession session,
+			BindingResult bindingResult,
 			Model model) {
 
 		try {
-			
+
 			if (bindingResult.hasErrors()) {
 
-				System.out.println("ERROR");
-				return "/login";
+				System.out.println("here");
+				return "login";
 			}
 
-			authenticationHelper.verifyAuthentication(login.getEmail(), login.getPassword());
-			session.setAttribute("currentUser", login.getEmail());
+			authenticationHelper.verifyAuthentication(userDto.getEmail(), userDto.getPassword());
+			session.setAttribute("currentUser", userDto.getEmail());
 
 			User user = authenticationHelper.tryGetUser(session);
 
-			return "redirect:/profile";
+			return "/index.html";
 
 		} catch (Exception ex) {
 

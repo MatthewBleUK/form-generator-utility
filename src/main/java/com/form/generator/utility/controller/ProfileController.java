@@ -2,7 +2,7 @@ package com.form.generator.utility.controller;
 
 import javax.servlet.http.HttpSession;
 
-import com.form.generator.utility.controller.login.AuthenticationHelper;
+import com.form.generator.utility.authentication.login.AuthenticationHelper;
 import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.service.UserService;
 import org.springframework.stereotype.Controller;
