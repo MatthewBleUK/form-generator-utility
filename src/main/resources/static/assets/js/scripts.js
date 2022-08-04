@@ -48,7 +48,7 @@ $("#sign-up-form").validate({
 		matchingPassword: {
 
 			required: true,
-			equalTo: password
+			equalTo: "#password"
 		}
 	},
 
@@ -182,7 +182,7 @@ $("#reset-password-form").validate({
 
 	rules: {
 
-		recover_email: {
+		recoveryEmail: {
 
 			required: true,
 			email: true
@@ -191,7 +191,7 @@ $("#reset-password-form").validate({
 
 	messages: {
 
-		recover_email: {
+		recoveryEmail: {
 
 			required: "Please enter a email",
 			email: "Your email address must be in the format of name@domain.com"
@@ -201,26 +201,6 @@ $("#reset-password-form").validate({
 
 	submitHandler: function () {
 
-		$.ajax({
-
-			type: "POST",
-			url: '',   // Post url
-			data: $('#reset-password-form').serialize(),
-
-			success: function (response) {
-
-				var jsonData = JSON.parse(response);
-
-				if (jsonData.success == "1") {
-
-					// success
-
-				} else {
-
-					// fail
-				}
-			}
-		});
 	}
 });
 
@@ -259,26 +239,6 @@ $("#change-password-form").validate({
 
 	submitHandler: function () {
 
-		$.ajax({
-
-			type: "POST",
-			url: '',   // Post url
-			data: $('#change-password-form').serialize(),
-
-			success: function (response) {
-
-				var jsonData = JSON.parse(response);
-
-				if (jsonData.success == "1") {
-
-					// success
-
-				} else {
-
-					// fail
-				}
-			}
-		});
 	}
 });
 

@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -16,9 +16,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 	<!-- Normalize -->
-	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
 	<!-- CSS Styles -->
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
 
 <body id="article-page">
@@ -51,9 +51,9 @@
 					</div>
 
 					<div class="drop-down-content">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="">Features</a></li>
-						<li><a href="">Support</a></li>
+						<li><a href="/index">Home</a></li>
+						<li><a href="#features">Features</a></li>
+						<li><a href="/support">Support</a></li>
 					</div>
 				</ul>
 
@@ -214,25 +214,25 @@
 			</span>
 
 			<ul class="footer-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="">Features</a></li>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="sign-up.html">Sign up</a></li>
-				<li><a href="">Support</a></li>
-				<li><a href="tos.html">Terms and Services</a></li>
-				<li><a href="privacy-policy.html">Privacy Policy</a></li>
+				<li><a href="/index">Home</a></li>
+				<li><a href="/index#features">Features</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/sign-up">Sign up</a></li>
+				<li><a href="/support">Support</a></li>
+				<li><a href="/tos">Terms and Services</a></li>
+				<li><a href="/privacy-policy">Privacy Policy</a></li>
 			</ul>
 		</div>
 	</footer>
 
 	<!-- jQuery -->
-	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
 
 	<!-- jQuery Validate -->
-	<script src="js/jquery-validate-1.19.5.min.js"></script>
+	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
 
 	<!-- JS Scripts -->
-	<script src="js/scripts.js"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
 </body>
 
 </html>
