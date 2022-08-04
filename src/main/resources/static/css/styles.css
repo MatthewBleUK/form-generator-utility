@@ -379,6 +379,18 @@ html {
 #form-page .form .error {
   color: red;
 }
+#form-page .form .checkbox {
+  display: inline-block;
+  width: 100%;
+  margin-top: 12px;
+  font-size: 15px;
+}
+#form-page .form .checkbox #remember_me {
+  display: inline-block;
+  width: 17px;
+  position: relative;
+  top: 1px;
+}
 
 @media only screen and (max-width: 395px) {
   #form-page .form {
@@ -604,6 +616,10 @@ html {
 .jquery-modal #two-factor-modal .row .col {
     margin-bottom: 25px;
   }
+}
+/** Google recaptcha on login and sign up page */
+#g-recaptcha {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,10 +1,10 @@
 database:
   url: jdbc:mysql://localhost:3306/java-auth
   username: root
-  password:
+  password: root
 
 google:
-  credentials: /home/alexandra/Desktop/personal-projects/java-authentication/src/main/resources/notifications/credentials.json
+  credentials: /Users/matthewbleathman/Documents/GitHub/this/form-generator-utility/src/main/resources/notifications/credentials.json
   client:
     id: 694093944993-oo4ibpm6olghu4tq2sakhv45j4q869re.apps.googleusercontent.com
     secret: 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
@@ -14,5 +14,5 @@ google:
 
 notification:
   template:
-    header: /home/alexandra/Desktop/personal-projects/java-authentication/src/main/resources/notifications/verification-head.html
-    footer: /home/alexandra/Desktop/personal-projects/java-authentication/src/main/resources/notifications/verification-tail.html
+    header: /Users/matthewbleathman/Documents/GitHub/this/form-generator-utility/src/main/resources/notifications/verification-head.html
+    footer: /Users/matthewbleathman/Documents/GitHub/this/form-generator-utility/src/main/resources/notifications/verification-tail.html

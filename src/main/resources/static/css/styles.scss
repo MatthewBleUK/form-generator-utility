@@ -473,6 +473,20 @@ html {
 		.error {
 			color: red;
 		}
+
+		.checkbox {
+			display: inline-block;
+			width: 100%;
+			margin-top: 12px;
+			font-size: 15px;
+
+			#remember_me {
+				display: inline-block;
+				width: 17px;
+				position: relative;
+				top: 1px;
+			}
+		}
 	}
 }
 
@@ -728,4 +742,10 @@ html {
 			}
 		}
 	}
+}
+
+/** Google recaptcha on login and sign up page */
+
+#g-recaptcha {
+	margin-top: 10px;
 }

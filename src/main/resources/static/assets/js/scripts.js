@@ -20,13 +20,13 @@ $("#sign-up-form").validate({
 
 	rules: {
 
-		fname: {
+		firstName: {
 
 			required: true,
 			minlength: 2
 		},
 
-		lname: {
+		lastName: {
 
 			required: true,
 			minlength: 2
@@ -42,42 +42,41 @@ $("#sign-up-form").validate({
 
 			required: true,
 			pwcheck: true,
-			minlength: 8
+
 		},
 
-		confirm_password: {
+		matchingPassword: {
 
 			required: true,
-			equalTo: "#password"
+			equalTo: password
 		}
 	},
 
 	messages: {
 
-		fname: {
+		firstName: {
 
 			required: "Please enter a first name",
 			minlength: "Please enter at least 2 characters"
 		},
 
-		lname: {
+		lastName: {
 
 			required: "Please enter a last name"
 		},
 
 		email: {
 
-			required: "Please enter a email",
+			required: "Please enter an email",
 			email: "Your email address must be in the format of name@domain.com"
 		},
 
 		password: {
 
 			required: "Please enter a password",
-			minlength: "Please enter at least 2 characters"
 		},
 
-		confirm_password: {
+		matchingPassword: {
 
 			required: "Please enter a confirm password",
 			equalTo: "The confirm password must be the same as the password"
@@ -86,28 +85,10 @@ $("#sign-up-form").validate({
 
 	submitHandler: function () {
 
-        return true;
+		if(checkGoogleRecaptcha()) {
+			return true;
+		}
 
-		/*$.ajax({
-
-			type: "POST",
-			url: '/sign-up',   // Post url
-			data: $('#sign-up-form').serialize(),
-
-			success: function (response) {
-
-				var jsonData = JSON.parse(response);
-
-				if (jsonData.success == "1") {
-
-					// success
-
-				} else {
-
-					// fail
-				}
-			}
-		});*/
 	}
 });
 
@@ -145,28 +126,10 @@ $("#login-form").validate({
 
 	submitHandler: function () {
 
-	    return true;
+		if(checkGoogleRecaptcha()) {
+			return true;
+		}
 
-		/*$.ajax({
-
-			type: "POST",
-			url: '',   // Post url
-			data: $('#login-form').serialize(),
-
-			success: function (response) {
-
-				var jsonData = JSON.parse(response);
-
-				if (jsonData.success == "1") {
-
-					// success
-
-				} else {
-
-					// fail
-				}
-			}
-		});*/
 	},
 
 });
@@ -178,7 +141,7 @@ $.validator.addMethod("pwcheck", function (value, element) {
 
 	let password = value;
 
-	if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&])(.{8,20}$)/.test(password))) {
+	if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&!£$%^&*?])(.{8,20}$)/.test(password))) {
 		return false;
 	}
 
@@ -206,9 +169,9 @@ $.validator.addMethod("pwcheck", function (value, element) {
 
 		return 'Password must contain at least one digit.';
 
-	} else if (!(/^(?=.*[@#$%&])/.test(password))) {
+	} else if (!(/^(?=.*[@#$%&!£$%^&*?])/.test(password))) {
 
-		return "Password must contain special characters from @#$%&.";
+		return "Password must contain special character";   // Special characters: @#$%&!£$%^&*?
 	}
 
 	return false;
@@ -318,3 +281,30 @@ $("#change-password-form").validate({
 		});
 	}
 });
+
+// Initialize google recaptcha
+function initializeRecaptcha() {
+
+    grecaptcha.render("g-recaptcha", {
+        "sitekey": "6Lfs9sIgAAAAAHyg-dTbmnJS88ZnnlejwgzzIGlm"
+    });
+
+};
+
+function checkGoogleRecaptcha() {
+
+    var response = grecaptcha.getResponse();
+
+    if(response.length === 0) {
+        //reCaptcha not verified
+
+		let error = document.querySelector('#recaptcha-error p');
+		error.innerHTML = 'Please solve the recaptcha';
+
+        return false;
+    } 
+
+	//reCaptch verified
+	return true;
+
+ }

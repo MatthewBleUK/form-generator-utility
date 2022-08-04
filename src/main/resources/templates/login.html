@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
 	<!-- CSS Styles -->
 	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+
 </head>
 
 <body id="form-page">
@@ -30,10 +31,14 @@
 
 		<h3>Login to Demo</h3>
 
-		<form id="sign-up-form" th:action="@{/login}" th:object="${user}" method="post">
+		<form id="login-form" th:action="@{/login}" th:object="${user}" method="post">
 
 			<div id="message" th:if="${message != null}">
-				<p>[[${message}]]</p>
+				<p class="error">[[${message}]]</p>
+			</div>
+
+			<div id="recaptcha-error">
+				<p class="error"></p>
 			</div>
 
 			<label class="form-label">Email Address *</label>
@@ -41,6 +46,12 @@
 
 			<label class="form-label">Password *</label>
 			<input th:field="*{password}" type="password" name="password" id="password" />
+
+			<label class="checkbox"> 
+				<input type="checkbox" value="remember-me" id="remember_me"> Remember me 
+			</label>
+
+			<div id="g-recaptcha"></div>
 
 			<span class="forgotten-pass-txt"><a href="reset-password.html">Forgotten your password?</a></span>
 
@@ -51,6 +62,10 @@
 		<span class="new-user-txt">Don't have an account? <a href="sign-up.html">Sign up here</a></span>
 
 	</div>
+
+	<!-- Google recaptcha -->
+	<script src="https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit"
+	th:src="@{https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit}" async defer></script>
 
 	<!-- jQuery -->
 	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
