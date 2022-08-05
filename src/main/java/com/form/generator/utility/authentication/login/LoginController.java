@@ -44,7 +44,6 @@ public class LoginController {
 
 			if (bindingResult.hasErrors()) {
 
-				System.out.println("here");
 				return "login";
 			}
 
@@ -53,7 +52,7 @@ public class LoginController {
 
 			User user = authenticationHelper.tryGetUser(session);
 
-			return "/index.html";
+			return "redirect:/profile";
 
 		} catch (Exception ex) {
 
@@ -61,5 +60,13 @@ public class LoginController {
 		}
 
 		return "/login";
+	}
+
+	@GetMapping("/logout")
+	public String handleLogout(HttpSession session) {
+
+		session.removeAttribute("currentUser");
+
+		return "redirect:/";
 	}
 }

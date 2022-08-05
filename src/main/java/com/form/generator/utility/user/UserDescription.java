@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 public class UserDescription implements Serializable {
 
 	@Id
-	@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(nullable = false, name = "username")
-	private User email;
+	private User user;
 
 	@Column(name = "first_name", nullable = false)
 	private String firstName;

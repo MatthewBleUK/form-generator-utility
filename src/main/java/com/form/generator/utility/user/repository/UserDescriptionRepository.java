@@ -1,8 +1,12 @@
 package com.form.generator.utility.user.repository;
 
+import java.util.List;
+
+import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.UserDescription;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +28,19 @@ public class UserDescriptionRepository {
 			session.beginTransaction();
 			session.save(userDescription);
 			session.getTransaction().commit();
+		}
+	}
+
+	public List<UserDescription> getUserDescriptionByEmail(String email) {
+
+		try (Session session = sessionFactory.openSession()) {
+
+			Query<UserDescription> query =
+					session.createQuery("from UserDescription where user.email = :email", UserDescription.class);
+
+			query.setParameter("email", email);
+
+			return query.list();
 		}
 	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import com.form.generator.utility.authentication.registration.RegistrationController;
 import com.form.generator.utility.notifications.GmailOperations;
 import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.UserDescription;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
 	private final PasswordEncoder passwordEncoder;
@@ -57,7 +56,7 @@ public class UserService {
 
 		UserDescription userDescription = new UserDescription();
 
-		userDescription.setEmail(user);
+		userDescription.setUser(user);
 		userDescription.setFirstName(userDto.getFirstName());
 		userDescription.setLastName(userDto.getLastName());
 

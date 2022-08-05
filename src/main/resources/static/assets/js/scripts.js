@@ -141,7 +141,7 @@ $.validator.addMethod("pwcheck", function (value, element) {
 
 	let password = value;
 
-	if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&!£$%^&*?])(.{8,20}$)/.test(password))) {
+	if (!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&!£$%^&*?_+=-])(.{8,20}$)/.test(password))) {
 		return false;
 	}
 
@@ -169,7 +169,7 @@ $.validator.addMethod("pwcheck", function (value, element) {
 
 		return 'Password must contain at least one digit.';
 
-	} else if (!(/^(?=.*[@#$%&!£$%^&*?])/.test(password))) {
+	} else if (!(/^(?=.*[@#$%&!£$%^&*?_+=-])/.test(password))) {
 
 		return "Password must contain special character";   // Special characters: @#$%&!£$%^&*?
 	}
