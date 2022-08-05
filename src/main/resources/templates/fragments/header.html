@@ -4,10 +4,10 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Privacy Policy</title>
+    <title>Header</title>
 
     <meta name="description"
-          content="Demo's application user profile. A free application to easily send form data straight to your email.">
+          content="Demo's application header. A free application to easily send form data straight to your email.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <!-- Normalize -->
@@ -43,7 +43,7 @@
 
                 <div class="drop-down-content">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#features">Features</a></li>
+                    <li><a href="/#features">Features</a></li>
                     <li><a href="/support">Support</a></li>
                 </div>
             </ul>
@@ -52,7 +52,7 @@
                 <li><a th:if="${currentUser == null}" href="/login">Login</a></li>
                 <li><a th:if="${currentUser != null}" href="" th:href="@{/logout}">Log out</a></li>
                 <li class="sign-up"><a href="/sign-up" th:if="${currentUser == null}">Get Started</a></li>
-                <li class="sign-up"><a href="/profile" th:if="${currentUser != null}">Profile</a></li>
+                <li class="sign-up"><a href="/profile" th:if="${currentUser != null}">Dashboard</a></li>
             </ul>
 
         </div>

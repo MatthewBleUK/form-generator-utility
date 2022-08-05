@@ -29,7 +29,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<header th:replace="header"> </header>
+	<div th:replace="fragments/header :: header"> </div>
 
 	<div id="security-menu">
 		<ul>
@@ -108,24 +108,7 @@
 		</div>
 	</div>
 
-	<footer>
-		<div class="footer-container">
-			<p class="authors">Made with &#9829; by <a href="">Alex</a> & <a href="">Matt</a></p>
-			<span class="copyright">Copyright &copy;
-				<script>document.write(new Date().getFullYear())</script> <a href="">Demo</a>. All Rights Reserved.
-			</span>
-
-			<ul class="footer-menu">
-				<li><a href="/index">Home</a></li>
-				<li><a href="/index#features">Features</a></li>
-				<li><a href="/login">Login</a></li>
-				<li><a href="/sign-up">Sign up</a></li>
-				<li><a href="/support">Support</a></li>
-				<li><a href="/tos">Terms and Services</a></li>
-				<li><a href="/privacy-policy">Privacy Policy</a></li>
-			</ul>
-		</div>
-	</footer>
+	<div th:replace="fragments/footer :: footer"> </div>
 
 	<div id="personal-details-modal" class="modal">
 
