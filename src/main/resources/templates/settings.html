@@ -29,18 +29,18 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div th:replace="fragments/header :: header"> </div>
+	<div th:replace="fragments/dashboard-header :: header"> </div>
 
-	<div id="security-menu">
-		<ul>
-			<li><a href="/settings">Account Settings</a></li>
-		</ul>
-	</div>
+<!--	<div id="user-dashboard-nav">-->
+<!--		<ul>-->
+<!--			<li><a href="/settings">Account Settings</a></li>-->
+<!--		</ul>-->
+<!--	</div>-->
 
 	<div id="user-settings">
 		<div class="user-settings-container">
 
-			<div class="help">
+			<!--<div class="help">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
 					 id="Capa_1" x="0px" y="0px" viewBox="0 0 431.855 431.855"
 					 style="enable-background:new 0 0 431.855 431.855;" xml:space="preserve">
@@ -51,9 +51,9 @@
 				<p>Make sure to read our <a href="/docs">docs</a> to understand how to use our application. If you
 					still need help check out our <a href="/support">freqency asked questions</a>.</p>
 				<a href="/support" class="support-btn">Contact Support</a>
-			</div>
+			</div>-->
 
-			<div class="user-info-container">
+			<div class="user-info-container" style="width: 100%">
 
 				<div class="personal-details">
 					<div class="title">
@@ -64,7 +64,7 @@
 									<path d="M132.189,117.092c-4.142,0-7.5,3.357-7.5,7.5v54.844H15.001V69.748h54.844c4.142,0,7.5-3.357,7.5-7.5s-3.358-7.5-7.5-7.5   H7.501c-4.142,0-7.5,3.357-7.5,7.5v124.687c0,4.143,3.358,7.5,7.5,7.5h124.687c4.142,0,7.5-3.357,7.5-7.5v-62.344   C139.689,120.449,136.331,117.092,132.189,117.092z"/>
 								</svg> -->
 
-							<a href="#personal-details-modal" rel="modal:open">Edit</a>
+							<a href="#personal-details-modal" rel="modal:open" id="personal-modal-btn">Edit</a>
 						</span>
 					</div>
 
@@ -85,7 +85,7 @@
 				<div class="password-settings">
 					<div class="title">
 						<h3>Password Settings</h3>
-						<a href="#password-modal" rel="modal:open">Edit</a>
+						<a href="#password-modal" rel="modal:open" id="password-modal-btn">Edit</a>
 					</div>
 
 					<div class="password-settings-container">
@@ -96,7 +96,7 @@
 				<div class="two-factor-auth">
 					<div class="title">
 						<h3>2-Factor Authentication</h3>
-						<a href="#two-factor-modal" rel="modal:open">Setup</a>
+						<a href="#two-factor-modal" rel="modal:open" id="two-factor-modal-btn">Setup</a>
 					</div>
 
 					<div class="two-factor-auth-container">
@@ -120,23 +120,23 @@
 			<div class="row">
 				<div class="col">
 					<label>First name</label>
-					<input type="text" name="fname" placeholder="First name">
+					<input type="text" name="fname" th:placeholder="${name}">
 				</div>
 
 				<div class="col">
 					<label>Last name</label>
-					<input type="text" name="lname" placeholder="Last name">
+					<input type="text" name="lname" th:placeholder="${name}">
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col width-100">
 					<label>Email</label>
-					<input type="email" name="email" placeholder="Email" disabled>
+					<input type="email" name="email" th:placeholder="${email}" disabled>
 				</div>
 			</div>
 
-			<input class="update-btn" type="submit" name="submit" value="Update" rel="modal:close">
+			<input class="update-btn" id="modal-close-btn" type="submit" name="submit" value="Update" rel="modal:close">
 		</form>
 
 	</div>
@@ -182,17 +182,8 @@
 
 	</div>
 
-	<!-- jQuery -->
-	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
-
-	<!-- jQuery Validate -->
-	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
-
-	<!-- jQuery Modal -->
-	<script src="../static/assets/js/jquery.modal-0.9.1.min.js" th:src="@{/assets/js/jquery.modal-0.9.1.min.js}"></script>
-
 	<!-- JS Scripts -->
-	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
 </body>
 
 </html>

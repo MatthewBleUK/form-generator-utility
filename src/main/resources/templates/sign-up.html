@@ -81,18 +81,23 @@
 		</form>
 	</div>
 
+	<!-- Google recaptcha initialize call back -->
+	<script>
+		var initializeRecaptcha = function() {
+
+			grecaptcha.render("g-recaptcha", {
+				"sitekey": "6Lfs9sIgAAAAAHyg-dTbmnJS88ZnnlejwgzzIGlm"
+			});
+
+		};
+	</script>
+
 	<!-- Google recaptcha -->
 	<script src="https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit"
 	th:src="@{https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit}" async defer></script>
 
-	<!-- jQuery -->
-	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
-
-	<!-- jQuery Validate -->
-	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
-
 	<!-- JS Scripts -->
-	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
 </body>
 
 </html>

@@ -52,7 +52,7 @@ public class LoginController {
 
 			User user = authenticationHelper.tryGetUser(session);
 
-			return "redirect:/profile";
+			return "redirect:/dashboard";
 
 		} catch (Exception ex) {
 

@@ -18,7 +18,7 @@
 <body>
 
 <header>
-    <div class="header-container">
+    <div class="header-container dashboard-header">
         <div class="site-logo-container">
             <h1 id="site-logo"><a href="/">Demo Logo</a></h1>
         </div>
@@ -42,16 +42,13 @@
                 </div>
 
                 <div class="drop-down-content">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/#features">Features</a></li>
-                    <li><a href="/support">Support</a></li>
+                    <li><a href="/dashboard" th:classappend="${#httpServletRequest.getRequestURI() == '/dashboard' ? 'active':''}">Dashboard</a></li>
+                    <li><a href="/settings" th:classappend="${#httpServletRequest.getRequestURI() == '/settings' ? 'active':''}">Settings</a></li>
                 </div>
             </ul>
 
             <ul class="get-started-links">
-                <li><a th:if="${currentUser == null}" href="/login">Login</a></li>
-                <li class="sign-up"><a href="/sign-up" th:if="${currentUser == null}">Get Started</a></li>
-                <li class="sign-up"><a href="/dashboard" th:if="${currentUser != null}">Dashboard</a></li>
+                <li class="sign-up"><a th:href="@{/logout}">Log out</a></li>
             </ul>
 
         </div>

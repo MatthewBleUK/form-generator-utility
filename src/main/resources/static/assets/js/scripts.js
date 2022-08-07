@@ -1,3 +1,7 @@
+import "./jquery-3.6.0.min.js";
+import "./jquery.modal-0.9.1.min.js";
+import "./jquery-validate-1.19.5.min.js";
+
 // Mobile Menu onClick open
 $(".mobile-nav-hamburger svg").click(function () {
 
@@ -242,15 +246,6 @@ $("#change-password-form").validate({
 	}
 });
 
-// Initialize google recaptcha
-function initializeRecaptcha() {
-
-    grecaptcha.render("g-recaptcha", {
-        "sitekey": "6Lfs9sIgAAAAAHyg-dTbmnJS88ZnnlejwgzzIGlm"
-    });
-
-};
-
 function checkGoogleRecaptcha() {
 
     var response = grecaptcha.getResponse();
@@ -268,3 +263,54 @@ function checkGoogleRecaptcha() {
 	return true;
 
  }
+
+ /* Changing modal url on click - for backend handling */
+
+ // on open modal
+
+ $('#personal-modal-btn').click(function(event) {
+
+     changeURL('personal-details');
+
+ });
+
+$('#password-modal-btn').click(function(event) {
+
+   changeURL('change-password');
+
+});
+
+$('#two-factor-modal-btn').click(function(event) {
+
+   changeURL('two-factor-setup');
+
+});
+
+// on close modal
+
+$('#personal-details-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+$('#password-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+$('#two-factor-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+function changeURL(url) {
+
+    const state = {};
+    const title = ''
+
+    history.pushState(state, title, url);
+
+}

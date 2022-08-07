@@ -34,7 +34,7 @@ public class UserController {
 		return session.getAttribute("currentUser") != null;
 	}
 
-	@GetMapping("/profile")
+	@GetMapping("/dashboard")
 	public String userProfile(HttpSession session, Model model) throws Exception {
 
 		User currentUser = authenticationHelper.tryGetUser(session);
@@ -43,7 +43,7 @@ public class UserController {
 		return "profile";
 	}
 
-	@GetMapping("/profile/settings")
+	@GetMapping("/settings")
 	public String userSettings(Model model, HttpSession session) throws Exception {
 
 		User user = authenticationHelper.tryGetUser(session);
