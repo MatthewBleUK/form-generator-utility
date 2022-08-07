@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Privacy Policy</title>
+
+    <meta name="description"
+          content="Demo's application footer. A free application to easily send form data straight to your email.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="../../static/css/normalize.css" th:href="@{/css/normalize.css}">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<footer>
+    <div class="footer-container">
+        <p class="authors">Made with &#9829; by <a href="">Alex</a> & <a href="">Matt</a></p>
+        <span class="copyright">Copyright &copy;
+				<script>document.write(new Date().getFullYear())</script> <a href="">Demo</a>. All Rights Reserved.
+			</span>
+
+        <ul class="footer-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a th:if="${currentUser == null}" href="/login">Login</a></li>
+            <li><a th:if="${currentUser == null}" href="/sign-up">Sign up</a></li>
+            <li><a th:if="${currentUser != null}" href="/profile">Dashboard</a></li>
+            <li><a href="/support">Support</a></li>
+            <li><a href="/tos">Terms and Services</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>

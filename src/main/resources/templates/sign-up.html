@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<title>Sign Up</title>
+
+	<meta name="description"
+		  content="Sign up page for Demo's application. A free application to easily send form data straight to your email." />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+	<!-- Normalize -->
+	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
+	<!-- CSS Styles -->
+	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+
+</script>
+</head>
+
+<body id="form-page">
+	<!--[if lt IE 7]>
+			<p class="browsehappy">
+				You are using an
+				<strong>outdated</strong>
+				browser. Please
+				<a href="#">upgrade your browser</a>
+				to improve your experience.
+			</p>
+		<![endif]-->
+
+	<div class="form">
+		<h3>Sign Up to Demo</h3>
+
+		<form id="sign-up-form" th:action="@{/sign-up}" th:object="${user}" method="post">
+
+			<div id="error" th:if="${error != null}">
+				<p class="error">[[${error}]]</p>
+			</div>
+
+			<div id="recaptcha-error">
+				<p class="error"></p>
+			</div>
+
+			<label class="form-label">First Name *</label>
+			<input th:field="*{firstName}"  type="text" name="firstName" />
+
+			<label class="form-label">Last Name *</label>
+			<input th:field="*{lastName}" type="text" name="lastName" />
+
+			<label class="form-label">Email Address *</label>
+			<input th:field="*{email}" type="email" name="email" />
+
+			<label class="form-label">Password *</label>
+			<input th:field="*{password}" type="password" name="password" id="password" />
+
+			<label class="form-label">Confirm Password *</label>
+			<input th:field="*{matchingPassword}" type="password" name="matchingPassword" />
+
+			<div id="g-recaptcha"></div>
+
+			<span class="terms-txt">
+				By creating an account, you agree to our
+				<a href="/tos">Terms & Conditions</a>
+				and
+				<a href="/privacy-policy">Privacy Policy</a>
+			</span>
+
+			<input type="submit" value="Sign Up" class="form-btn" />
+
+			<span class="existing-user-txt">
+				Already have an account?
+				<a href="/login">Log in here</a>
+			</span>
+
+		</form>
+	</div>
+
+	<!-- Google recaptcha -->
+	<script src="https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit"
+	th:src="@{https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit}" async defer></script>
+
+	<!-- jQuery -->
+	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
+
+	<!-- jQuery Validate -->
+	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
+
+	<!-- JS Scripts -->
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
+</body>
+
+</html>
