@@ -1,18 +1,14 @@
 package com.form.generator.utility.user.controller;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import com.form.generator.utility.authentication.login.AuthenticationHelper;
 import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.UserDescription;
 import com.form.generator.utility.user.service.UserDescriptionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller

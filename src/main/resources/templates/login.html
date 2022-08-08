@@ -47,8 +47,10 @@
 			<label class="form-label">Password *</label>
 			<input th:field="*{password}" type="password" name="password" id="password" />
 
-			<label class="checkbox"> 
-				<input type="checkbox" name="remember-me"  id="remember_me" checked> Remember me
+			<label class="checkbox">
+				<input type="checkbox" name="remember-me"  id="remember_me"
+					   th:value=${true}
+					   th:field="*{rememberMe}"> Remember me
 			</label>
 
 			<span class="forgotten-pass-txt"><a href="/reset-password">Forgotten your password?</a></span>

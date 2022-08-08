@@ -13,10 +13,13 @@
 
 	<meta name="description"
 		  content="Demo's application user's profile. A free application to easily send form data straight to your email.">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 	<!-- Normalize -->
 	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
+	<!-- Jquery modal -->
+	<link rel="stylesheet" href="../static/css/jquery.modal-0.9.1.min.css" th:href="@{/css/jquery.modal-0.9.1.min.css}">
 	<!-- CSS Styles -->
 	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
@@ -36,12 +39,12 @@
 				<div class="title">
 					<h2>Dashboard</h2>
 
-					<a href="" class="new-form-btn">New Form</a>
+					<a href="#add-form-modal" rel="modal:open" class="new-form-btn">New Form</a>
 				</div>
 
 				<div class="user-forms">
 					<div class="form-entry">
-						<p class="no-entries-txt">You have no forms setup. Get started by creating a <a href="#">new form</a>.</p>
+						<p class="no-entries-txt">You have no forms setup. Get started by creating a <a href="#add-form-modal" rel="modal:open">new form</a>.</p>
 					</div>
 
 					<div class="form-entry">
@@ -49,7 +52,7 @@
 
 						<p>Submissions: <span>0</span></p>
 
-						<p><a href="#">Set up guide</a></p>
+						<p><a href="#set-up-guide-modal" rel="modal:open">Set up guide</a></p>
 
 						<div class="entry-dropdown">
 							<i class="settings-gear-svg"></i>
@@ -66,10 +69,40 @@
 		</div>
 	</div>
 
+	<!-- Add Form Modals -->
+	<div id="add-form-modal" class="modal">
+
+		<div class="modal-title-container">
+			<h3 class="modal-title">Create a new form</h3>
+		</div>
+
+		<form id="add-new-form" method="post">
+			<div class="row">
+				<div class="col width-100">
+					<label>Form name</label>
+					<input type="text" name="formName" id="form-name">
+				</div>
+			</div>
+
+			<input class="add-form-btn" type="submit" name="submit" value="Create form" rel="modal:close">
+		</form>
+
+	</div>
+
+	<!-- Set up guide Modals -->
+	<div id="set-up-guide-modal" class="modal">
+
+		<div class="modal-title-container">
+			<h3 class="modal-title">Set up instructions</h3>
+		</div>
+
+	</div>
+
 	<div th:replace="fragments/footer :: footer"> </div>
 
 	<!-- JS Scripts -->
 	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
+
 </body>
 
 </html>

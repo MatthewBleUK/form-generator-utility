@@ -18,7 +18,7 @@ $(window).on('resize', function () {
 
 	}
 });
-
+≈Ωq
 // Validation for sign up form
 $("#sign-up-form").validate({
 
@@ -246,10 +246,73 @@ $("#change-password-form").validate({
 	}
 });
 
+// Validation for sign up form
+$("#add-new-form").validate({
+
+	rules: {
+
+		formName: {
+
+			required: true,
+			minlength: 2
+		}
+
+	},
+
+	messages: {
+
+		formName: {
+
+			required: "Please enter a form name",
+		}
+	},
+
+	submitHandler: function (event) {
+
+
+    	addNewFormtoDom();
+	}
+});
+
+// function addNewFormtoDom() {
+
+//     let newFormTitle = $('#add-new-form #form-name').val();
+// 	// let afterElement = $('.user-forms');
+
+// 	console.log(newFormTitle);
+
+// 	let afterEl2 = document.querySelector('.user-forms');
+
+//     console.log(afterEl2);
+
+//     let div = `
+// 			<div class="form-entry">
+// 				<h3 class="form-title">${newFormTitle}</h3>
+
+// 				<p>Submissions: <span>0</span></p>
+
+// 				<p><a href="#set-up-guide-modal" rel="modal:open">Set up guide</a></p>
+
+// 				<div class="entry-dropdown">
+// 					<i class="settings-gear-svg"></i>
+
+// 					<div class="entry-dropdown-content">
+// 						<a href="#">Delete</a>
+// 					</div>
+// 				</div>
+// 			</div>
+//     	`;
+
+// 		console.log(div);
+
+// 		afterEl2.insertAdjacentHTML("afterbegin", div);
+
+// }
+
 function checkGoogleRecaptcha() {
 
     var response = grecaptcha.getResponse();
-
+	
     if(response.length === 0) {
         //reCaptcha not verified
 
@@ -314,3 +377,8 @@ function changeURL(url) {
     history.pushState(state, title, url);
 
 }
+
+/* Modal fade */
+
+
+

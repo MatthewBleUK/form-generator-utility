@@ -2,9 +2,9 @@ package com.form.generator.utility.authentication.login;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import com.form.generator.utility.user.LoginDTO;
 import com.form.generator.utility.user.User;
+import org.jsoup.internal.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +35,7 @@ public class LoginController {
 
 	@PostMapping("/login")
 	public String handleLogin(
-			@Valid @ModelAttribute("user") LoginDTO userDto,
+			@Valid @ModelAttribute("user") LoginDTO loginDTO,
 			HttpSession session,
 			BindingResult bindingResult,
 			Model model) {
@@ -47,8 +47,14 @@ public class LoginController {
 				return "login";
 			}
 
-			authenticationHelper.verifyAuthentication(userDto.getEmail(), userDto.getPassword());
-			session.setAttribute("currentUser", userDto.getEmail());
+			authenticationHelper.verifyAuthentication(loginDTO.getEmail(), loginDTO.getPassword());
+			session.setAttribute("currentUser", loginDTO.getEmail());
+
+			// thymeleaf will return true only if the checkbox is checked and null if not checked
+			if (!StringUtil.isBlank(loginDTO.getRememberMe()) && loginDTO.getRememberMe().equals("true")) {
+
+				session.setMaxInactiveInterval(300000);
+			}
 
 			User user = authenticationHelper.tryGetUser(session);
 

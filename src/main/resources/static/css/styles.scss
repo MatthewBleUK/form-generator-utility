@@ -144,6 +144,9 @@ header {
             }
         }
     }
+
+    #add-form-modal {
+    }
 }
 
 /* Tablet Header Navigation */
@@ -601,14 +604,15 @@ footer {
                 justify-content: space-between;
                 align-items: center;
                 padding: 25px 60px;
-
+                column-gap: 25px;
+                row-gap: 10px;
+                flex-wrap: wrap;
 
                 p.no-entries-txt {
                     padding: 25px;
                     width: 100%;
                     text-align: center;
                 }
-
 
                  i.settings-gear-svg {
                     background-image: url('../images/settings-gear.svg');
@@ -657,10 +661,6 @@ footer {
 
                 /* Show the dropdown menu on hover */
                 .entry-dropdown:hover .entry-dropdown-content {display: block;}
-
-
-
-
 
             }
         }
@@ -809,7 +809,9 @@ footer {
 
 	#personal-details-modal,
 	#password-modal,
-	#two-factor-modal {
+	#two-factor-modal,
+	#add-form-modal,
+	#set-up-guide-modal {
 		-webkit-box-shadow: none;
 		box-shadow: none;
 		border-radius: 3px;
@@ -834,7 +836,7 @@ footer {
 			font-weight: 500;
 		}
 
-		.update-btn {
+		.update-btn, .add-form-btn {
 			width: 100%;
 			background: #02ad88;
 			border: none;

@@ -105,28 +105,11 @@
 		</div>
 	</article>
 
-	<footer>
-		<div class="footer-container">
-			<p class="authors">Made with &#9829; by <a href="">Alex</a> & <a href="">Matt</a></p>
-			<span class="copyright">Copyright &copy;
-				<script>document.write(new Date().getFullYear())</script> <a href="">Demo</a>. All Rights Reserved.
-			</span>
-
-			<ul class="footer-menu">
-				<li><a href="/">Home</a></li>
-				<li><a href="/#features">Features</a></li>
-				<li><a th:if="${currentUser == null}" href="/login">Login</a></li>
-				<li><a th:if="${currentUser == null}" href="/sign-up">Sign up</a></li>
-				<li><a th:if="${currentUser != null}" href="/dashboard">Dashboard</a></li>
-				<li><a href="/support">Support</a></li>
-				<li><a href="/tos">Terms and Services</a></li>
-				<li><a href="/privacy-policy">Privacy Policy</a></li>
-			</ul>
-		</div>
-	</footer>
+	<div th:replace="fragments/footer :: footer"> </div>
 
 	<!-- JS Scripts -->
 	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
+
 </body>
 
 </html>
