@@ -1,3 +1,7 @@
+import "./jquery-3.6.0.min.js";
+import "./jquery.modal-0.9.1.min.js";
+import "./jquery-validate-1.19.5.min.js";
+
 // Mobile Menu onClick open
 $(".mobile-nav-hamburger svg").click(function () {
 
@@ -242,19 +246,73 @@ $("#change-password-form").validate({
 	}
 });
 
-// Initialize google recaptcha
-function initializeRecaptcha() {
+// Validation for sign up form
+$("#add-new-form").validate({
 
-    grecaptcha.render("g-recaptcha", {
-        "sitekey": "6Lfs9sIgAAAAAHyg-dTbmnJS88ZnnlejwgzzIGlm"
-    });
+	rules: {
 
-};
+		formName: {
+
+			required: true,
+			minlength: 2
+		}
+
+	},
+
+	messages: {
+
+		formName: {
+
+			required: "Please enter a form name",
+		}
+	},
+
+	submitHandler: function (event) {
+
+
+    	addNewFormtoDom();
+	}
+});
+
+// function addNewFormtoDom() {
+
+//     let newFormTitle = $('#add-new-form #form-name').val();
+// 	// let afterElement = $('.user-forms');
+
+// 	console.log(newFormTitle);
+
+// 	let afterEl2 = document.querySelector('.user-forms');
+
+//     console.log(afterEl2);
+
+//     let div = `
+// 			<div class="form-entry">
+// 				<h3 class="form-title">${newFormTitle}</h3>
+
+// 				<p>Submissions: <span>0</span></p>
+
+// 				<p><a href="#set-up-guide-modal" rel="modal:open">Set up guide</a></p>
+
+// 				<div class="entry-dropdown">
+// 					<i class="settings-gear-svg"></i>
+
+// 					<div class="entry-dropdown-content">
+// 						<a href="#">Delete</a>
+// 					</div>
+// 				</div>
+// 			</div>
+//     	`;
+
+// 		console.log(div);
+
+// 		afterEl2.insertAdjacentHTML("afterbegin", div);
+
+// }
 
 function checkGoogleRecaptcha() {
 
     var response = grecaptcha.getResponse();
-
+	
     if(response.length === 0) {
         //reCaptcha not verified
 
@@ -268,3 +326,59 @@ function checkGoogleRecaptcha() {
 	return true;
 
  }
+
+ /* Changing modal url on click - for backend handling */
+
+ // on open modal
+
+ $('#personal-modal-btn').click(function(event) {
+
+     changeURL('personal-details');
+
+ });
+
+$('#password-modal-btn').click(function(event) {
+
+   changeURL('change-password');
+
+});
+
+$('#two-factor-modal-btn').click(function(event) {
+
+   changeURL('two-factor-setup');
+
+});
+
+// on close modal
+
+$('#personal-details-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+$('#password-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+$('#two-factor-modal').on($.modal.CLOSE, function(event, modal) {
+
+   changeURL('settings');
+
+});
+
+function changeURL(url) {
+
+    const state = {};
+    const title = ''
+
+    history.pushState(state, title, url);
+
+}
+
+/* Modal fade */
+
+
+
