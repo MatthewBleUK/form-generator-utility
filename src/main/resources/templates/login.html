@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
 	<!-- CSS Styles -->
 	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+
 </head>
 
 <body id="form-page">
@@ -46,16 +47,15 @@
 			<label class="form-label">Password *</label>
 			<input th:field="*{password}" type="password" name="password" id="password" />
 
-			<label class="checkbox"> 
+			<label class="checkbox">
 				<input type="checkbox" name="remember-me"  id="remember_me"
 					   th:value=${true}
 					   th:field="*{rememberMe}"> Remember me
 			</label>
-<!--
-			<div id="g-recaptcha"></div>
--->
 
 			<span class="forgotten-pass-txt"><a href="/reset-password">Forgotten your password?</a></span>
+
+			<div id="g-recaptcha"></div>
 
 			<input type="submit" value="Login" class="form-btn">
 
@@ -65,18 +65,23 @@
 
 	</div>
 
+	<!-- Google recaptcha initialize call back -->
+	<script>
+		var initializeRecaptcha = function() {
+
+			grecaptcha.render("g-recaptcha", {
+				"sitekey": "6Lfs9sIgAAAAAHyg-dTbmnJS88ZnnlejwgzzIGlm"
+			});
+
+		};
+	</script>
+
 	<!-- Google recaptcha -->
 	<script src="https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit"
 	th:src="@{https://www.google.com/recaptcha/api.js?onload=initializeRecaptcha&render=explicit}" async defer></script>
 
-	<!-- jQuery -->
-	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
-
-	<!-- jQuery Validate -->
-	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
-
 	<!-- JS Scripts -->
-	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
 </body>
 
 </html>

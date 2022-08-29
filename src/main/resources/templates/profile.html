@@ -9,14 +9,17 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Privacy Policy</title>
+	<title>User's Dashboard</title>
 
 	<meta name="description"
-		  content="Demo's application user profile. A free application to easily send form data straight to your email.">
+		  content="Demo's application user's profile. A free application to easily send form data straight to your email.">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 	<!-- Normalize -->
 	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
+	<!-- Jquery modal -->
+	<link rel="stylesheet" href="../static/css/jquery.modal-0.9.1.min.css" th:href="@{/css/jquery.modal-0.9.1.min.css}">
 	<!-- CSS Styles -->
 	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
@@ -26,18 +29,80 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-	<div th:replace="fragments/header :: header"> </div>
+	<div th:replace="fragments/dashboard-header :: header"> </div>
+
+	<div id="user-dashboard">
+		<div class="user-dashboard-container">
+
+			<div class="user-dashboard">
+
+				<div class="title">
+					<h2>Dashboard</h2>
+
+					<a href="#add-form-modal" rel="modal:open" class="new-form-btn">New Form</a>
+				</div>
+
+				<div class="user-forms">
+					<div class="form-entry">
+						<p class="no-entries-txt">You have no forms setup. Get started by creating a <a href="#add-form-modal" rel="modal:open">new form</a>.</p>
+					</div>
+
+					<div class="form-entry">
+						<h3 class="form-title">Sign up Form</h3>
+
+						<p>Submissions: <span>0</span></p>
+
+						<p><a href="#set-up-guide-modal" rel="modal:open">Set up guide</a></p>
+
+						<div class="entry-dropdown">
+							<i class="settings-gear-svg"></i>
+
+							<div class="entry-dropdown-content">
+								<a href="#">Delete</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Add Form Modals -->
+	<div id="add-form-modal" class="modal">
+
+		<div class="modal-title-container">
+			<h3 class="modal-title">Create a new form</h3>
+		</div>
+
+		<form id="add-new-form" method="post">
+			<div class="row">
+				<div class="col width-100">
+					<label>Form name</label>
+					<input type="text" name="formName" id="form-name">
+				</div>
+			</div>
+
+			<input class="add-form-btn" type="submit" name="submit" value="Create form" rel="modal:close">
+		</form>
+
+	</div>
+
+	<!-- Set up guide Modals -->
+	<div id="set-up-guide-modal" class="modal">
+
+		<div class="modal-title-container">
+			<h3 class="modal-title">Set up instructions</h3>
+		</div>
+
+	</div>
 
 	<div th:replace="fragments/footer :: footer"> </div>
 
-	<!-- jQuery -->
-	<script src="../static/assets/js/jquery-3.6.0.min.js" th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
-
-	<!-- jQuery Validate -->
-	<script src="../static/assets/js/jquery-validate-1.19.5.min.js" th:src="@{/assets/js/jquery-validate-1.19.5.min.js}"></script>
-
 	<!-- JS Scripts -->
-	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}"></script>
+	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
+
 </body>
 
 </html>

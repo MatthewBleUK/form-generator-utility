@@ -10,13 +10,13 @@ html {
   background: #f5f7f8;
   font-family: "Urbanist", sans-serif;
   font-weight: 400;
-  height: 100%;
 }
 
 /* Default / Desktop Header Navigation */
 header {
   background: #fff;
   min-width: 320px;
+  border-bottom: 1px solid #dbdbdb;
 }
 header .header-container {
   font-weight: 600;
@@ -103,7 +103,14 @@ header .header-container #main-navigation .nav-down-arrow {
   position: relative;
   top: 2px;
 }
-
+header .dashboard-header #main-navigation ul li a {
+  color: #6E84A3;
+  font-weight: 500;
+}
+header .dashboard-header #main-navigation ul li a.active {
+  color: #343f52;
+  font-weight: 600;
+}
 /* Tablet Header Navigation */
 @media (max-width: 810px) {
   header .header-container #main-navigation .drop-down-button {
@@ -302,14 +309,6 @@ footer .footer-container .footer-menu a:hover {
   color: #02ad88;
 }
 
-body,
-html {
-  background: #f5f7f8;
-  font-family: "Urbanist", sans-serif;
-  font-weight: 400;
-  height: 100%;
-}
-
 /* Full screen form pages - login, register, change-password and reset-password pages */
 #form-page {
   background: #f5f7f8;
@@ -369,8 +368,8 @@ html {
   margin-top: 25px;
 }
 #form-page .form .forgotten-pass-txt {
-  padding-top: 11px;
-  display: block;
+  display: inline-block;
+  margin: 12px 0px;
   font-size: 0.9rem;
 }
 #form-page .form .forgotten-pass-txt a {
@@ -381,8 +380,8 @@ html {
 }
 #form-page .form .checkbox {
   display: inline-block;
-  width: 100%;
-  margin-top: 12px;
+  width: 182px;
+  margin: 12px 0px;
   font-size: 15px;
 }
 #form-page .form .checkbox #remember_me {
@@ -399,12 +398,12 @@ html {
   }
 }
 /* User profile */
-#security-menu {
+#user-dashboard-nav {
   height: 50px;
   background: #02ad88;
   padding: 0px 25px;
 }
-#security-menu ul {
+#user-dashboard-nav ul {
   margin: 0;
   list-style-type: none;
   padding: 0;
@@ -414,15 +413,123 @@ html {
   justify-content: center;
   align-items: center;
 }
-#security-menu ul li {
+#user-dashboard-nav ul li {
   height: 100%;
   line-height: 50px;
   padding: 0px 18px;
+  margin-right: 10px;
   background: #05a381;
 }
-#security-menu ul li a {
+#user-dashboard-nav ul li a {
   text-decoration: none;
   color: #fff;
+}
+
+#user-dashboard {
+  width: 100%;
+}
+#user-dashboard .user-dashboard-container {
+  display: flex;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 25px;
+  flex-direction: column;
+}
+#user-dashboard .user-dashboard-container .title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0px 25px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom: 1px solid #e2e5e7;
+  width: 100%;
+}
+#user-dashboard .user-dashboard-container .title .new-form-btn {
+  color: #fff;
+  padding: 11px 19px;
+  background: #02ad88;
+  border-radius: 23px;
+  height: 41px;
+  text-decoration: none;
+  position: relative;
+  top: 14px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+#user-dashboard .user-dashboard-container .title .new-form-btn:hover {
+  box-shadow: 0 0 10px #02ad88;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry {
+  background: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  width: 100%;
+  margin: 16px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  column-gap: 25px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  /* The container <div> - needed to position the dropdown content */
+  /* Dropdown Content (Hidden by Default) */
+  /* Links inside the dropdown */
+  /* Change color of dropdown links on hover */
+  /* Show the dropdown menu on hover */
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry p.no-entries-txt {
+  padding: 25px;
+  width: 100%;
+  text-align: center;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry i.settings-gear-svg {
+  background-image: url("../images/settings-gear.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  width: 23px;
+  height: 25px;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry i.settings-gear-svg:hover {
+  cursor: pointer;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry .entry-dropdown {
+  position: relative;
+  display: inline-block;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry .entry-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #f1f0f0;
+  border-radius: 5px;
+  min-width: 160px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08);
+  right: 0px;
+  z-index: 1;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry .entry-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry .entry-dropdown-content a:hover {
+  background-color: #ddd;
+}
+#user-dashboard .user-dashboard-container .user-forms .form-entry .entry-dropdown:hover .entry-dropdown-content {
+  display: block;
 }
 
 #user-settings {
@@ -540,14 +647,18 @@ html {
 }
 .jquery-modal #personal-details-modal,
 .jquery-modal #password-modal,
-.jquery-modal #two-factor-modal {
+.jquery-modal #two-factor-modal,
+.jquery-modal #add-form-modal,
+.jquery-modal #set-up-guide-modal {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 3px;
 }
 .jquery-modal #personal-details-modal h3,
 .jquery-modal #password-modal h3,
-.jquery-modal #two-factor-modal h3 {
+.jquery-modal #two-factor-modal h3,
+.jquery-modal #add-form-modal h3,
+.jquery-modal #set-up-guide-modal h3 {
   border-bottom: 1px solid #dee2e6;
   padding-bottom: 25px;
   margin-bottom: 30px;
@@ -555,7 +666,9 @@ html {
 }
 .jquery-modal #personal-details-modal input,
 .jquery-modal #password-modal input,
-.jquery-modal #two-factor-modal input {
+.jquery-modal #two-factor-modal input,
+.jquery-modal #add-form-modal input,
+.jquery-modal #set-up-guide-modal input {
   border: 1px solid #dae1e3;
   padding: 13px 16px;
   color: #656565;
@@ -563,14 +676,22 @@ html {
 }
 .jquery-modal #personal-details-modal label,
 .jquery-modal #password-modal label,
-.jquery-modal #two-factor-modal label {
+.jquery-modal #two-factor-modal label,
+.jquery-modal #add-form-modal label,
+.jquery-modal #set-up-guide-modal label {
   margin-bottom: 8px;
   color: #4c4d4d;
   font-weight: 500;
 }
-.jquery-modal #personal-details-modal .update-btn,
+.jquery-modal #personal-details-modal .update-btn, .jquery-modal #personal-details-modal .add-form-btn,
 .jquery-modal #password-modal .update-btn,
-.jquery-modal #two-factor-modal .update-btn {
+.jquery-modal #password-modal .add-form-btn,
+.jquery-modal #two-factor-modal .update-btn,
+.jquery-modal #two-factor-modal .add-form-btn,
+.jquery-modal #add-form-modal .update-btn,
+.jquery-modal #add-form-modal .add-form-btn,
+.jquery-modal #set-up-guide-modal .update-btn,
+.jquery-modal #set-up-guide-modal .add-form-btn {
   width: 100%;
   background: #02ad88;
   border: none;
@@ -579,28 +700,40 @@ html {
   transition: 0.3s;
   margin-bottom: 12px;
 }
-.jquery-modal #personal-details-modal .update-btn:hover,
+.jquery-modal #personal-details-modal .update-btn:hover, .jquery-modal #personal-details-modal .add-form-btn:hover,
 .jquery-modal #password-modal .update-btn:hover,
-.jquery-modal #two-factor-modal .update-btn:hover {
+.jquery-modal #password-modal .add-form-btn:hover,
+.jquery-modal #two-factor-modal .update-btn:hover,
+.jquery-modal #two-factor-modal .add-form-btn:hover,
+.jquery-modal #add-form-modal .update-btn:hover,
+.jquery-modal #add-form-modal .add-form-btn:hover,
+.jquery-modal #set-up-guide-modal .update-btn:hover,
+.jquery-modal #set-up-guide-modal .add-form-btn:hover {
   background: #02ad88e3;
   cursor: pointer;
 }
 .jquery-modal #personal-details-modal .row,
 .jquery-modal #password-modal .row,
-.jquery-modal #two-factor-modal .row {
+.jquery-modal #two-factor-modal .row,
+.jquery-modal #add-form-modal .row,
+.jquery-modal #set-up-guide-modal .row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
 }
 .jquery-modal #personal-details-modal .row .col,
 .jquery-modal #password-modal .row .col,
-.jquery-modal #two-factor-modal .row .col {
+.jquery-modal #two-factor-modal .row .col,
+.jquery-modal #add-form-modal .row .col,
+.jquery-modal #set-up-guide-modal .row .col {
   display: flex;
   flex-direction: column;
 }
 .jquery-modal #personal-details-modal .row .width-100,
 .jquery-modal #password-modal .row .width-100,
-.jquery-modal #two-factor-modal .row .width-100 {
+.jquery-modal #two-factor-modal .row .width-100,
+.jquery-modal #add-form-modal .row .width-100,
+.jquery-modal #set-up-guide-modal .row .width-100 {
   width: 100%;
 }
 
