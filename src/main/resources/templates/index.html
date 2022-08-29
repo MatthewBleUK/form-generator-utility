@@ -17,6 +17,10 @@
 
 	<!-- Normalize -->
 	<link rel="stylesheet" href="../static/css/normalize.css" th:href="@{/css/normalize.css}">
+
+	<!-- Link to the file hosted on your server, -->
+	<link rel="stylesheet" href="../static/css/splide.min.css" th:href="@{/css/splide.min.css}">
+
 	<!-- CSS Styles -->
 	<link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
 </head>
@@ -27,22 +31,187 @@
         <![endif]-->
 
 	<div th:replace="fragments/header :: header"> </div>
-	<!-- <section id="">
-            <div class="container">
-                <h1>Create Forms without a backend - We handle it for you and send it straight to your email</h1>
-            </div>
-        </section>
 
-        <section id="features">
-            <div class="container">
-                <h2>Features</h2>
-            </div>
-        </section> -->
+	<div id="main-content">
+		<section id="introduction">
+			<div class="introduction-container">
 
-	<div th:replace="fragments/footer :: footer"> </div>
+				<div class="blob-icon-container">
+					<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 512 512" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="envelop-svg">
+						<g>
+							<path d="M174.545 302.545L81.455 302.545C74.473 302.545 69.819 307.2 69.819 314.181C69.819 321.162 74.474 325.817 81.455 325.817L174.546 325.817C181.528 325.817 186.182 321.162 186.182 314.181C186.182 307.2 181.527 302.545 174.545 302.545Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+							<path d="M139.636 244.364L46.545 244.364C39.563 244.364 34.909 249.019 34.909 256C34.909 262.981 39.564 267.636 46.545 267.636L139.636 267.636C146.618 267.636 151.272 262.981 151.272 256C151.272 249.019 146.618 244.364 139.636 244.364Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+							<path d="M104.727 186.182L11.636 186.182C4.655 186.182 0 190.836 0 197.818C0 204.8 4.655 209.454 11.636 209.454L104.727 209.454C111.709 209.454 116.363 204.799 116.363 197.818C116.363 190.837 111.709 186.182 104.727 186.182Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+							<path d="M463.127 155.927C459.636 151.272 451.491 150.109 446.836 153.6L323.491 247.855C310.691 257.164 293.236 257.164 280.436 247.855L157.091 153.6C152.436 150.109 144.291 150.109 140.8 155.927C137.309 160.582 137.309 168.727 143.127 172.218L267.636 266.473C278.109 274.618 290.909 278.109 302.545 278.109C314.181 278.109 328.145 274.618 337.454 266.473L460.8 172.218C465.455 168.727 466.618 160.582 463.127 155.927Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+							<path d="M477.091 104.727L104.727 104.727C97.745 104.727 93.091 109.382 93.091 116.363C93.091 123.344 97.745 128 104.727 128L477.091 128C484.073 128 488.727 132.655 488.727 139.636L488.727 372.363C488.727 379.345 484.072 383.999 477.091 383.999L104.727 383.999C97.745 383.999 93.091 388.654 93.091 395.635C93.091 402.617 97.746 407.271 104.727 407.271L477.091 407.271C496.873 407.271 512 392.144 512 372.362L512 139.636C512 119.855 496.873 104.727 477.091 104.727Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+							<path d="M461.964 340.945L392.146 271.127C387.491 266.472 380.51 266.472 375.855 271.127C371.2 275.782 371.2 282.763 375.855 287.418L445.673 357.236C448 359.563 451.491 360.727 453.818 360.727C456.145 360.727 459.636 359.563 461.964 357.236C466.618 352.582 466.618 345.6 461.964 340.945Z" fill="#ffffff" fill-rule="evenodd" opacity="0.73" stroke="none"/>
+						</g>
+					</svg>
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" transform="rotate(129)" class="blob-svg">
+
+						<path style="opacity: 0.84;">
+							<animate attributeName="d" dur="10s" repeatCount="indefinite" values="M384.02639,318.52969Q359.04619,387.05939,278.02474,435.01815Q197.0033,482.97691,137.94391,408.01485Q78.88453,333.05279,75.91422,249.0132Q72.94391,164.97361,138.46041,107.43731Q203.97691,49.90102,276.0132,88.41917Q348.04949,126.93731,378.52804,188.46866Q409.0066,250,384.02639,318.52969Z;M388.67097,319.27849Q360.55699,388.55699,291.23441,379.72688Q221.91183,370.89678,145.00645,354.28387Q68.10108,337.67097,71.32903,251.33548Q74.55699,165,142.39247,119.95591Q210.22796,74.91183,286.12043,91.61398Q362.0129,108.31613,389.39892,179.15806Q416.78495,250,388.67097,319.27849Z;M420.7122,331.4339Q380.09423,412.86779,301.16508,392.29219Q222.23594,371.7166,157.11322,349.24982Q91.99051,326.78305,53.64135,232.38203Q15.29219,137.98101,118.09898,129.47187Q220.90577,120.96273,294.67458,111.25967Q368.44339,101.55661,414.88678,175.77831Q461.33017,250,420.7122,331.4339Z;M384.02639,318.52969Q359.04619,387.05939,278.02474,435.01815Q197.0033,482.97691,137.94391,408.01485Q78.88453,333.05279,75.91422,249.0132Q72.94391,164.97361,138.46041,107.43731Q203.97691,49.90102,276.0132,88.41917Q348.04949,126.93731,378.52804,188.46866Q409.0066,250,384.02639,318.52969Z"></animate>
+						</path>
+
+					</svg>
+				</div>
+
+				<div class="content-container">
+					<h1>Capture <span>form input</span> and send it straight to your <span>inbox</span>.</h1>
+					<!--<h2>An ideal solution for websites without a backend</h2>-->
+					<p>Demo is an application that will handle HTML5 form input and send it straight to your inbox without the need of any backend server side programming language.</p>
+
+					<a href="/sign-up" class="homepage-cta">Get started for free</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="features">
+			<div class="features-container">
+
+				<div class="splide">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide slide1" data-splide-interval="15000">
+
+								<h2>Complete <span>Control</span>.</h2>
+								<p>Demo supports AJAX which allows you to submit forms without refreshing the page while giving you complete freedom with how you handle the response.</p>
+								<p>Say goodbye to page refreshes. Demo supports AJAX giving you complete control with how you handle the response without the need of redirecting the url after submission.</p>
+							</li>
+
+							<li class="splide__slide slide2" data-splide-interval="15000">
+
+								<h2>Easy to <span>Integrate</span>.</h2>
+
+								<div class="txt-right-container">
+									<p>A plug and play solution. Simply add a standard HTML5 form with some additional provided javascript code, and you are ready to go!</p>
+								</div>
+
+								<div class="code-exmaple-container">
+									<div class="code-example">
+										<span>&lt;<span class="ce-tag">form</span> <span class="ce-attribute">action</span>=<span class="ce-property">"https://demo/user/id"</span> <span class="ce-attribute">method</span>=<span class="ce-property">"POST"</span>&gt;</span>
+										<span class="tab">&lt;<span class="ce-tag">input</span> <span class="ce-attribute">type</span>=<span class="ce-property">"email"</span> <span class="ce-attribute">name</span>=<span class="ce-property">"email"</span> <span class="ce-attribute">placeholder</span>=<span class="ce-property">"Email"</span>&gt;</span>
+										<span class="tab">&lt;<span class="ce-tag">input</span> <span class="ce-attribute">type</span>=<span class="ce-property">"text"</span> <span class="ce-attribute">name</span>=<span class="ce-property">"subject"</span> <span class="ce-attribute">placeholder</span>=<span class="ce-property">"Subject"</span>&gt;</span>
+										<span class="tab">&lt;<span class="ce-tag">textarea</span> <span class="ce-attribute">name</span>=<span class="ce-property">"message"</span> <span class="ce-attribute">rows</span>=<span class="ce-property">"6"</span> <span class="ce-attribute">maxlength</span>=<span class="ce-property">"300"</span>&gt;&lt;/<span class="ce-tag">textarea</span>&gt;</span>
+										<span class="tab">&lt;<span class="ce-tag">input</span> <span class="ce-attribute">type</span>=<span class="ce-property">"submit"</span> <span class="ce-attribute">value</span>=<span class="ce-property">"Submit"</span>&gt;</span>
+										<span>&lt;<span class="ce-tag">/form</span>&gt;</span>
+									</div>
+								</div>
+
+							</li>
+
+							<li class="splide__slide slide3" data-splide-interval="15000">
+								<h2>Super <span>Fast</span> & <span>Reliable</span>.</h2>
+
+								<div class="txt-right-container">
+									Demo uses the Gmail's API to ensure reliable and fast delivery while reducing the risks of emails going to spam.
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="splide__progress">
+						<div class="splide__progress__bar">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<!--	<section id="how-it-works">-->
+	<!--		<h3>How does it work?</h3>-->
+	<!--		<p>1.</p>-->
+	<!--		<p>2.</p>-->
+	<!--		<p>3.</p>-->
+	<!--	</section>-->
+
+	<!--	<section id="works-on">-->
+	<!--		<h3>Supportive by all</h3>-->
+	<!--		<p>Demo was first built to work for GitHub Oages and is now fully functional on all Javascript Libraries, Content Management Systems and Static Sites.</p>-->
+	<!--	</section>-->
+
+		<section id="pricing">
+			<div class="pricing-container">
+
+				<h3>Pricing.</h3>
+
+				<p class="pricing-subheader">
+					Our free plan has a 1000 monthly email limit. If you need more please contact us, and we can set up a plan designed for you!
+				</p>
+
+				<div class="pricing-plan-container">
+					<div class="free-pricing-table">
+						<h4>Free <span>Plan</span></h4>
+						<p>A free plan that is suitable for start-ups and small businesses.</p>
+
+						<ul>
+							<li><i class="green-tick"></i>1000 monthly email limit</li>
+							<li><i class="green-tick"></i>Unlimited form endpoint</li>
+							<li><i class="green-tick"></i>Custom URL redirects</li>
+							<li><i class="green-tick"></i>Weekly summary emails</li>
+							<li><i class="green-tick"></i>Priority support</li>
+						</ul>
+
+						<a href="/sign-up">Get started</a>
+					</div>
+
+					<div class="unlimited-pricing-table">
+						<h4>Custom <span>Plan</span></h4>
+						<p>A plan that is specifically designed for your needs.</p>
+
+						<ul>
+							<li><i class="green-tick"></i>Tailored / Unlimited email limit</li>
+							<li><i class="green-tick"></i>Unlimited form endpoint</li>
+							<li><i class="green-tick"></i>Custom URL redirects</li>
+							<li><i class="green-tick"></i>Weekly summary emails</li>
+							<li><i class="green-tick"></i>Priority support</li>
+						</ul>
+
+						<a href="/support">Contact us</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="end-page-cta">
+			<div class="end-page-cta-container">
+				<h3>Get Started</h3>
+			</div>
+		</section>
+
+		<div th:replace="fragments/footer :: footer"> </div>
+
+	</div>
+
+
+	<script src="../static/assets/js/splide.min.js" th:src="@{/assets/js/splide.min.js}" ></script>
 
 	<!-- JS Scripts -->
 	<script src="../static/assets/js/scripts.js" th:src="@{/assets/js/scripts.js}" type="module"></script>
+
+	<script>
+		// Homepage slideshow
+		var splide = new Splide( '.splide', {
+			type: 'loop',
+			perPage: 1,
+			autoplay: false,
+			start: 1,
+			speed: 2000
+		});
+
+		splide.on( 'pagination:mounted', function ( data ) {
+			// You can add your class to the UL element
+			data.list.classList.add( 'splide__pagination--custom' );
+
+			// `items` contains all dot items
+			data.items.forEach( function ( item ) {
+				item.button.textContent = String( item.page + 1 );
+			});
+		});
+
+		splide.mount();
+	</script>
 
 </body>
 
