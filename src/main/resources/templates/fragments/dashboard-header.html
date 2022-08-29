@@ -1,67 +1,43 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header">
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Header</title>
-
-    <meta name="description"
-          content="Demo's application header. A free application to easily send form data straight to your email.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-    <!-- Normalize -->
-    <link rel="stylesheet" href="../../static/css/normalize.css" th:href="@{/css/normalize.css}">
-    <!-- CSS Styles -->
-    <link rel="stylesheet" href="../../static/css/styles.css" th:href="@{/css/styles.css}">
-</head>
-<body>
-
 <header>
-    <div class="header-container dashboard-header">
+    <div class="header-container">
+
         <div class="site-logo-container">
             <h1 id="site-logo"><a href="/">Demo Logo</a></h1>
         </div>
 
-        <div id="main-navigation">
+        <div id="desktop-navigation">
+
             <ul class="nav-links">
-                <div class="drop-down-button">
-                    <li class="active">
-                        <a>
-                            Menu
-
-                            <svg class="nav-down-arrow" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 viewBox="0 0 199.404 199.404" xml:space="preserve">
-									<polygon
-                                            points="199.404,63.993 171.12,35.709 99.702,107.127 28.284,35.709 0,63.993 99.702,163.695 	" />
-								</svg>
-                        </a>
-
-                    </li>
-                </div>
-
-                <div class="drop-down-content">
-                    <li><a href="/profile" th:classappend="${#httpServletRequest.getRequestURI() == '/profile' ? 'active':''}">Dashboard</a></li>
-                    <li><a href="/profile/settings" th:classappend="${#httpServletRequest.getRequestURI() == '/profile/settings' ? 'active':''}">Settings</a></li>
-                </div>
+                <li><a href="/profile" th:classappend="${#httpServletRequest.getRequestURI() == '/profile' ? 'active':''}">Dashboard</a></li>
+                <li><a href="/profile/settings" th:classappend="${#httpServletRequest.getRequestURI() == '/profile/settings' ? 'active':''}">Settings</a></li>
             </ul>
 
-            <ul class="get-started-links">
-                <li class="sign-up"><a th:href="@{/logout}">Log out</a></li>
+            <ul class="profile-links">
+                <li class="log-out-btn"><a th:href="@{/logout}">Log out</a></li>
             </ul>
 
         </div>
 
-        <div class="mobile-nav-hamburger">
-            <svg viewBox="0 0 100 80" width="40" height="40">
-                <rect width="100" height="20"></rect>
-                <rect y="30" width="100" height="20"></rect>
-                <rect y="60" width="100" height="20"></rect>
-            </svg>
+        <div id="mobile-navigation">
+
+            <div class="mobile-nav-hamburger">
+
+                <svg viewBox="0 0 100 100">
+                    <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="line line2" d="M 20,50 H 80" />
+                    <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                </svg>
+
+            </div>
+
+            <ul>
+                <li><a href="/profile" th:classappend="${#httpServletRequest.getRequestURI() == '/profile' ? 'active':''}">Dashboard</a></li>
+                <li><a href="/profile/settings" th:classappend="${#httpServletRequest.getRequestURI() == '/profile/settings' ? 'active':''}">Settings</a></li>
+
+                <li><a th:href="@{/logout}">Log out</a></li>
+            </ul>
+
         </div>
+
     </div>
 </header>
-
-</body>
-</html>
