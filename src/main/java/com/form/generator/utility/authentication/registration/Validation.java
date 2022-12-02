@@ -1,104 +1,95 @@
 package com.form.generator.utility.authentication.registration;
 
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
+import com.form.generator.utility.authentication.registration.validation.EmailValidation;
+import com.form.generator.utility.authentication.registration.validation.UserValidation;
+import com.form.generator.utility.authentication.registration.validation.FieldValidation;
+import com.form.generator.utility.authentication.registration.validation.PasswordValidation;
 import com.form.generator.utility.user.dto.UserDto;
 import com.form.generator.utility.user.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Validation {
 
-	private final UserService userService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmailValidation.class);
 
-	public Validation(UserService userService) {
+    private final UserService userService;
 
-		this.userService = userService;
-	}
+    public Validation(UserService userService) {
 
-	/**
-	 * Validates if:
-	 * <ul>
-	 *     <li>User is already registered</li>
-	 *     <li>The password and the confirm password match</li>
-	 *     <li>A strong password is used: (1 symbol, 1 lowercase and 1 uppercase letter, between 8 and 20 chars</li>
-	 * </ul>
-	 */
-	void validateUser(UserDto userDto) throws Exception {
+        this.userService = userService;
+    }
 
-		checkMissingFields(userDto);
-		checkValidEmail(userDto.getEmail());
-		isUserAlreadyRegistered(userDto.getEmail());
-		validateMatchingPassword(userDto.getPassword(), userDto.getMatchingPassword());
-		validateSafePassword(userDto.getPassword());
-	}
+    /**
+     * Validates if:
+     * <ul>
+     *     <li>User is already registered</li>
+     *     <li>The password and the confirm password match</li>
+     *     <li>A strong password is used: (1 symbol, 1 lowercase and 1 uppercase letter, between 8 and 20 chars</li>
+     * </ul>
+     */
+    void validateUser(UserDto userDto) throws Exception {
 
-	private void checkMissingFields(UserDto userDto) throws Exception {
+        String email = userDto.getEmail();
 
-		if (userDto.getFirstName().isBlank() || userDto.getLastName().isBlank() || userDto.getEmail().isBlank()){
+        // the concurrent latch is used, so we can validate all the fields at the same time,
+        // while not allowing the program to continue until this process is finished
+        CountDownLatch countDownLatch = new CountDownLatch(4);
+        ExecutorService executor = Executors.newFixedThreadPool(4);
 
-			throw new Exception("Fields should not be empty!");
-		}
-	}
+        try {
 
-	private void checkValidEmail(String email) throws Exception {
+            List<Runnable> runnables = new ArrayList<>();
+            List<Future<?>> futures = new ArrayList<>();
 
-		if(!email.contains("@")) {
+            runnables.add(new FieldValidation(userDto, countDownLatch));
+            runnables.add(new EmailValidation(email, countDownLatch));
+            runnables.add(new UserValidation(email, userService, countDownLatch));
+            runnables.add(new PasswordValidation(userDto.getPassword(), userDto.getMatchingPassword(), countDownLatch));
 
-			throw new Exception("Enter a valid email!");
-		}
-	}
+            for (Runnable runnable : runnables) {
 
-	private void isUserAlreadyRegistered(String email) throws Exception {
+                futures.add(executor.submit(runnable));
+            }
 
-		if (userService.findUser(email).size() != 0) {
+            for (Future<?> future : futures) {
 
-			throw new Exception("User already registered!");
-		}
-	}
+                future.get();
+            }
 
-	/**
-	 * Validates if the password and confirmation password are the same
-	 *
-	 * @throws Exception when passwords don't match
-	 */
-	private void validateMatchingPassword(String password, String matchingPassword) throws Exception {
+            countDownLatch.await();
 
-		if (!Objects.equals(password, matchingPassword)) {
+        } catch (Exception ex) {
 
-			throw new Exception("Passwords don't match!");
-		}
-	}
+            LOGGER.error("Error while validating registration", ex);
+            throw new Exception(ex.getMessage().replace("java.lang.RuntimeException: ", ""));
 
-	/**
-	 * Method for validating the strength of a password
-	 *
-	 * @param password should contain
-	 * @throws Exception when password isn't between 8 and 20 symbols and doesn't contain at least:
-	 *                   <ul>
-	 *                    <li> 1 special symbol </li>
-	 *                    <li> 1 uppercase letter </li>
-	 *                    <li> 1 lowercase letter </li>
-	 *                   </ul>
-	 */
-	private void validateSafePassword(String password) throws Exception {
+        } finally {
 
-		if (!isValid(password)) {
+            shutdownAndAwaitTermination(executor);
+        }
+    }
 
-			throw new Exception("Password needs to contain" +
-					" 1 special symbol, 1 Capital Letter, 1 Lowercase letter and should be between 8 and 20 symbols");
-		}
-	}
+    private static void shutdownAndAwaitTermination(ExecutorService executor) {
 
-	private boolean isValid(final String password) {
+        executor.shutdown();
 
-		// digit + lowercase char + uppercase char + symbol
-		String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
-		Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        try {
 
-		Matcher matcher = pattern.matcher(password);
-		return matcher.matches();
-	}
+            if (!executor.awaitTermination(30, TimeUnit.MINUTES)) {
+
+                executor.shutdownNow();
+            }
+
+        } catch (InterruptedException e) {
+
+            executor.shutdownNow();
+        }
+    }
 }

@@ -35,6 +35,14 @@ public class VerificationToken {
 	@Column(name = "expiry_date")
 	private Date expiryDate;
 
+	public VerificationToken(User user, String token) {
+
+		super();
+		expiryDate = calculateExpiryDate();
+		this.user = user;
+		this.token = token;
+	}
+
 	private Date calculateExpiryDate() {
 
 		Calendar cal = Calendar.getInstance();
@@ -42,13 +50,5 @@ public class VerificationToken {
 		cal.add(Calendar.MINUTE, EXPIRATION);
 
 		return new Date(cal.getTime().getTime());
-	}
-
-	public VerificationToken(User user, String token) {
-
-		super();
-		expiryDate = calculateExpiryDate();
-		this.user = user;
-		this.token = token;
 	}
 }

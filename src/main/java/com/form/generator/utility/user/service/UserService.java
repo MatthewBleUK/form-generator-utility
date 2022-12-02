@@ -3,7 +3,9 @@ package com.form.generator.utility.user.service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.*;
 
+import com.form.generator.utility.notifications.EmailConfirmationThread;
 import com.form.generator.utility.notifications.GmailOperations;
 import com.form.generator.utility.user.User;
 import com.form.generator.utility.user.UserDescription;
@@ -17,6 +19,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.Email;
 
 @Service
 public class UserService {
@@ -47,7 +51,7 @@ public class UserService {
 		this.gmailOperations = gmailOperations;
 	}
 
-	public void create(UserDto userDto) {
+	public void create(UserDto userDto) throws InterruptedException {
 
 		User user = new User();
 
@@ -63,46 +67,28 @@ public class UserService {
 		userRepository.create(user);
 		userDescriptionRepository.create(userDescription);
 
+		EmailConfirmationThread emailConfirmationThread =
+				new EmailConfirmationThread(gmailOperations, userDto, user, tokenRepository);
+
+		ExecutorService executorService = Executors.newFixedThreadPool(1);
+
 		try {
 
-			gmailOperations.sendEmailForConfirmRegistration(userDto.getEmail(), createVerificationToken(user));
+			executorService.submit(emailConfirmationThread);
 
 		} catch (Exception exception) {
 
 			exception.printStackTrace();
+
+		} finally {
+
+			executorService.shutdown();
 		}
 	}
 
 	public List<User> findUser(String email) {
 
 		return userRepository.getUserByEmail(email);
-	}
-
-	public String createVerificationToken(User user) {
-
-		String token = createToken();
-		VerificationToken newToken = new VerificationToken(user, token);
-
-		tokenRepository.createToken(newToken);
-
-		return token;
-	}
-
-	/**
-	 * Creates a random string that will be used as validation token for email
-	 */
-	private String createToken() {
-
-		int leftLimit = 48; // numeral '0'
-		int rightLimit = 122; // letter 'z'
-
-		Random random = new Random();
-
-		return random.ints(leftLimit, rightLimit + 1)
-				.filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-				.limit(16)
-				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-				.toString();
 	}
 
 	public void enableUserAccount(User user) {
